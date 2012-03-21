@@ -43,7 +43,7 @@ _经同事的不懈努力测试，按上面方法，系统绝对能正常安装�
 5.  VoodooBattery.kext    电池显示
 
 ###驱动安装###
-+   先安装_10.7.3 Combo Update_ ，安装完后**不要点重启!!**
++   先安装_10.7.3 Combo Update_ ，安装完后**不要重启!!**
 +   运行MultiBeast,选择下面提到的驱动
 ```
 System Utilities
@@ -58,7 +58,7 @@ Drivers & Bootloaders -> Kexts & Enablers -> Network - > Lnx2Mac's Realtek...
 Customization -> System Definitions -> MacBook Pro - > MacBook Pro 8,1
 OSx86 Software -> 全选
 ```
-+   点击下一步、继续继续。安装完后，**不要也重启**。
++   点击下一步、继续继续。安装完后，**不要重启**。
 
 +   在运行一次MultiBeast，只选择声卡驱动
 ```
