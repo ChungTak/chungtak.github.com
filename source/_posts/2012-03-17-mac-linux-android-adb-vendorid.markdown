@@ -1,0 +1,39 @@
+---
+layout: post
+title: "mac linux android adb vendorId"
+date: 2012-03-17 14:39
+comments: true
+categories: Android
+---
+
+<p>android adb连接不到设备一般有2种解决方法：</p>
+<ol>
+    <li>在adb_usb.ini文件下添加vendor id；</li>
+    <li>去市场下载个adb wireless通过这个wifi'进行连接</li>
+</ol>
+<div>adb wireless很方便，网上很多教程，这里就不说了。这里主要说明一下这个vendor id怎么来。</div>
+<div>&nbsp;</div>
+<div>首先确定在用户目录~/.android/adb_usb.ini文件存在，如果没有需要运行以下命令生成</div>
+<div>
+    <pre class="brush: bash; gutter: false; toolbar: false; auto-links: false; wrap-lines: false">android update adb</pre>
+</div>
+<div>在<strong>Linux</strong>下运行lsusb命令，命令结果为</div>
+<div><pre class="brush: bash; gutter: false; toolbar: false; auto-links: false; wrap-lines: false">Bus 005 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 004 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 003 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 002 Device 002: ID 0e79:1411 Archos, Inc.
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</pre>
+</div>
+<div>从列表中找到android设备名称，我的是Archos所以id为<span class="Apple-style-span" style="white-space: pre;"
+                                           data-mce-style="white-space: pre;">0e79</span>
+</div>
+<div><span class="Apple-style-span" style="white-space: pre;" data-mce-style="white-space: pre;">在adb_usb.ini上填入id的时候需要添加0x开头,填写0x0e79。每行一个id。</span>
+</div>
+<div><span class="Apple-style-span" style="white-space: pre;" data-mce-style="white-space: pre;"><br></span></div>
+<div><span class="Apple-style-span" style="white-space: pre;" data-mce-style="white-space: pre;"><strong>在Mac</strong> 系统查看命令不同，运行的命令为</span>
+</div>
+<div>
+    <pre class="brush: bash; gutter: false; toolbar: false; auto-links: false; wrap-lines: false">system_profiler SPUSBDataType</pre>
+</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
