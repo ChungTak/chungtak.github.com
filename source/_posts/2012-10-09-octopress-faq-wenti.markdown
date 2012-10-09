@@ -42,6 +42,7 @@ rake操作应该在source分支下进行，若是刚从github里clone下来的�
 发现是因为代码是新从github下clone下来的，未进行初始化deploy.需要执行`$ rake setup_github_pages`进行初始化。
 
 + **fatal: 'octopress' does not appear to be a git repository**
+
 命令行执行：`$ git remote add octopress https://github.com/imathis/octopress.git`
 
 + **undefined method \`[]\' for nil:NilClass**
