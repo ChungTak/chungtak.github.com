@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web | 大小麦哲伦]]></title>
   <link href="http://zhongdechan.github.com/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://zhongdechan.github.com/"/>
-  <updated>2012-10-09T21:16:23+00:00</updated>
+  <updated>2012-10-09T21:27:29+00:00</updated>
   <id>http://zhongdechan.github.com/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
@@ -61,9 +61,14 @@ sdk_version = { 9 =&gt; '10.5', 10 =&gt; '10.6', 11 =&gt; '10.7',12=&gt;'10.8' }
 <p>发现是因为代码是新从github下clone下来的，未进行初始化deploy.需要执行<code>$ rake setup_github_pages</code>进行初始化。</p>
 
 <ul>
-<li><p><strong>fatal: 'octopress' does not appear to be a git repository</strong>
-命令行执行：<code>$ git remote add octopress https://github.com/imathis/octopress.git</code></p></li>
-<li><p><strong>undefined method `[]\' for nil:NilClass</strong></p></li>
+<li><strong>fatal: 'octopress' does not appear to be a git repository</strong></li>
+</ul>
+
+
+<p>命令行执行：<code>$ git remote add octopress https://github.com/imathis/octopress.git</code></p>
+
+<ul>
+<li><strong>undefined method `[]\' for nil:NilClass</strong></li>
 </ul>
 
 
