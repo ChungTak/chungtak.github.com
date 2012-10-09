@@ -19,11 +19,11 @@ CPU:Core i3 （完美）
 SD Card reader(完美)
 蓝牙(无驱动)
 WiFi(无驱动) 这款卡太老，没驱动的，建议买个usb网卡替代。[EDUP EP-N8513 隐藏型无线网卡](http://www.360buy.com/product/389343.html)
-
+<!--more-->
 ###安装注意事项###
 安装基础教程这里就不说了，pcbeta上有写得非常好的 。[lion图文详细安装教程](http://bbs.pcbeta.com/viewthread-920341-1-1.html)
 
-这里指出这款机器安装的特别要注意的地方
+这里指出这款机器安装的特别要注意的地方(10.8支持很好，不需以下步骤)
 1.  保证所有硬盘卷轴不能有中文，不然会导致安装界面鼠标键盘不能用
 2.  如果安装界面usb鼠标键盘仍然不能用，把/System/Library/Extensions/AppleIntel** 、 Ati* 、Geforce*** 和 NV** 驱动都删掉
 3.  安装的时候usb要用左边的usb2.0接口，右面的usb3.0接口要进入系统后安装相应驱动才能使用
@@ -45,7 +45,7 @@ _经同事的不懈努力测试，按上面方法，系统绝对能正常安装�
 ###驱动安装###
 +   先安装_10.7.3 Combo Update_ ，安装完后**不要重启!!**
 +   运行MultiBeast,选择下面提到的驱动
-```
+``` tex
 System Utilities
 Drivers & Bootloaders -> Kexts & Enablers -> Miscellaneous -> ElliottForceLegacyRTC
 Drivers & Bootloaders -> Kexts & Enablers -> Miscellaneous -> EvOreboot
@@ -61,12 +61,12 @@ OSx86 Software -> 全选
 +   点击下一步、继续继续。安装完后，**不要重启**。
 
 +   在运行一次MultiBeast，只选择声卡驱动
-```
+``` tex
 Drivers & Bootloaders -> Kexts & Enablers -> Audio -> Universal -> VoodooHDA .2.7.3
 ```
 删除自带的AppleHDA
 
-```
+``` bash
 rm -r AppleHDA.kext   (在/System/Library/Extensions)
 ```
 
