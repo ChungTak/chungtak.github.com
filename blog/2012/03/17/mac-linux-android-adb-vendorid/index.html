@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>mac linux android adb vendorId - 大小麦哲伦</title>
+  <meta name="author" content="zhongdechan">
+
+  
+  <meta name="description" content="android adb连接不到设备一般有2种解决方法： 在adb_usb.ini文件下添加vendor id； 去市场下载个adb wireless通过这个wifi&#8217;进行连接 adb wireless很方便，网上很多教程，这里就不说了。这里主要说明一下这个vendor id怎么来。 & &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhongdechan.github.com/blog/2012/03/17/mac-linux-android-adb-vendorid/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="大小麦哲伦" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30173088-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">大小麦哲伦</a></h1>
+  
+    <h2>名字叫阿花，摇着尾巴 ... ...</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhongdechan.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Mac Linux Android Adb vendorId</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-17T14:39:00+00:00" pubdate data-updated="true">Mar 17<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>android adb连接不到设备一般有2种解决方法：</p>
+
+
+<ol>
+    <li>在adb_usb.ini文件下添加vendor id；</li>
+    <li>去市场下载个adb wireless通过这个wifi&#8217;进行连接</li>
+</ol>
+
+
+<div>adb wireless很方便，网上很多教程，这里就不说了。这里主要说明一下这个vendor id怎么来。</div>
+
+
+<div>&nbsp;</div>
+
+
+<div>首先确定在用户目录~/.android/adb_usb.ini文件存在，如果没有需要运行以下命令生成</div>
+
+
+<div>
+    <pre class="brush: bash; gutter: false; toolbar: false; auto-links: false; wrap-lines: false">android update adb</pre>
+</div>
+
+
+<div>在<strong>Linux</strong>下运行lsusb命令，命令结果为</div>
+
+
+<div><pre class="brush: bash; gutter: false; toolbar: false; auto-links: false; wrap-lines: false">Bus 005 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 004 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 003 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 002 Device 002: ID 0e79:1411 Archos, Inc.
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</pre>
+</div>
+
+
+<div>从列表中找到android设备名称，我的是Archos所以id为<span class="Apple-style-span" style="white-space: pre;"
+                                           data-mce-style="white-space: pre;">0e79</span>
+</div>
+
+
+<div><span class="Apple-style-span" style="white-space: pre;" data-mce-style="white-space: pre;">在adb_usb.ini上填入id的时候需要添加0x开头,填写0x0e79。每行一个id。</span>
+</div>
+
+
+<div><span class="Apple-style-span" style="white-space: pre;" data-mce-style="white-space: pre;"><br></span></div>
+
+
+<div><span class="Apple-style-span" style="white-space: pre;" data-mce-style="white-space: pre;"><strong>在Mac</strong> 系统查看命令不同，运行的命令为</span>
+</div>
+
+
+<div>
+    <pre class="brush: bash; gutter: false; toolbar: false; auto-links: false; wrap-lines: false">system_profiler SPUSBDataType</pre>
+</div>
+
+
+<div>&nbsp;</div>
+
+
+<div>&nbsp;</div>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhongdechan</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-17T14:39:00+00:00" pubdate data-updated="true">Mar 17<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/android/'>Android</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zhongdechan.github.com/blog/2012/03/17/mac-linux-android-adb-vendorid/" data-via="" data-counturl="http://zhongdechan.github.com/blog/2012/03/17/mac-linux-android-adb-vendorid/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/02/15/parallels-shard-number-0-network/" title="Previous Post: Parallels shard #0 network">&laquo; Parallels shard #0 network</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/03/21/dell-vostro-v131-mac-lion/" title="Next Post: Dell Vostro v131 mac lion 完美安装">Dell Vostro v131 mac lion 完美安装 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/21/dell-vostro-v131-mac-lion/">Dell Vostro v131 mac lion 完美安装</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/17/mac-linux-android-adb-vendorid/">mac linux android adb vendorId</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/15/parallels-shard-number-0-network/">Parallels shard #0 network</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/">Twitter Bootstrap Modal插件点击背景自动消失</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/">Can't locate Android SDK in Titanium Studio</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+<section>
+  <h1>标签云</h1>
+    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 130.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 160.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 160.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 160.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 130.0%'>JAVA(1)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(2)</a> <a href='/blog/categories/titanium' style='font-size: 130.0%'>Titanium(1)</a> <a href='/blog/categories/webservice' style='font-size: 130.0%'>WebService(1)</a> </span>
+</section>
+<section>
+  <h1>博客分类</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (1)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhongdechan -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zhongdechansblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zhongdechan.github.com/blog/2012/03/17/mac-linux-android-adb-vendorid/';
+        var disqus_url = 'http://zhongdechan.github.com/blog/2012/03/17/mac-linux-android-adb-vendorid/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

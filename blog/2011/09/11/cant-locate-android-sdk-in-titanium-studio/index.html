@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Can't locate Android SDK in Titanium Studio - 大小麦哲伦</title>
+  <meta name="author" content="zhongdechan">
+
+  
+  <meta name="description" content="在Titanium Studio中设置了Android sdk路径，但是运行的时候提示&#8221;Can&#8217;t locate Android SDK&#8221;
+原因是Titanium sdk 对 Android sdk版本有要求:
++ Titaniun sdk 1.7 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="大小麦哲伦" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30173088-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">大小麦哲伦</a></h1>
+  
+    <h2>名字叫阿花，摇着尾巴 ... ...</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhongdechan.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Can't Locate Android SDK in Titanium Studio</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-11T14:28:00+00:00" pubdate data-updated="true">Sep 11<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>在Titanium Studio中设置了Android sdk路径，但是运行的时候提示&#8221;Can&#8217;t locate Android SDK&#8221;
+原因是Titanium sdk 对 Android sdk版本有要求:
++ <strong>Titaniun sdk 1.7 要求至少要Android sdk 2.1</strong>
++ <strong>Titaniun sdk 1.8 要求至少要Android sdk 2.2</strong></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhongdechan</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-11T14:28:00+00:00" pubdate data-updated="true">Sep 11<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/titanium/'>Titanium</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/" data-via="" data-counturl="http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/08/15/grails2-upgrade-exception/" title="Previous Post: Grails2 upgrade exception">&laquo; Grails2 upgrade exception</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/" title="Next Post: Twitter Bootstrap Modal插件点击背景自动消失">Twitter Bootstrap Modal插件点击背景自动消失 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/21/dell-vostro-v131-mac-lion/">Dell Vostro v131 mac lion 完美安装</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/03/17/mac-linux-android-adb-vendorid/">mac linux android adb vendorId</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/15/parallels-shard-number-0-network/">Parallels shard #0 network</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/">Twitter Bootstrap Modal插件点击背景自动消失</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/">Can't locate Android SDK in Titanium Studio</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+<section>
+  <h1>标签云</h1>
+    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 130.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 160.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 160.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 160.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 130.0%'>JAVA(1)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(2)</a> <a href='/blog/categories/titanium' style='font-size: 130.0%'>Titanium(1)</a> <a href='/blog/categories/webservice' style='font-size: 130.0%'>WebService(1)</a> </span>
+</section>
+<section>
+  <h1>博客分类</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (1)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - zhongdechan -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zhongdechansblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/';
+        var disqus_url = 'http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

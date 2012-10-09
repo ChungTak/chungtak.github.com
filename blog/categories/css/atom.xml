@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: CSS | 大小麦哲伦]]></title>
+  <link href="http://zhongdechan.github.com/blog/categories/css/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.com/"/>
+  <updated>2012-10-09T11:29:24+00:00</updated>
+  <id>http://zhongdechan.github.com/</id>
+  <author>
+    <name><![CDATA[zhongdechan]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Twitter Bootstrap Modal插件点击背景自动消失]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/"/>
+    <updated>2011-11-14T10:31:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/11/14/twitter-bootstrap-modal-auto-hide</id>
+    <content type="html"><![CDATA[<p>我是在Twitter Bootstrap2.0.1中遇到这个问题。
+问题描述：
+直接调用
+<code>javascript
+$('#myModal').modal('show')；
+</code>
+显示的Modal存在一个问题，就是当你鼠标点击Modal后面的背景，Modal会自动隐藏消失！！！
+只要添加一个参数就可以解决这个问题
+<code>javascript
+$('#myModal').modal(backdrop:'static');
+</code>
+官方文档显示backdrop的类型是boolean，实际上设置true和false都不行，文档上有错误应该为String类型才对</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[twitter bootstrap IE7下断行问题]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line/"/>
+    <updated>2011-01-11T04:04:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line</id>
+    <content type="html"><![CDATA[<p>twitter bootstrap2.0有一个bug，在html上添加注释会引起断行（IE7下，IE8，9没问题）
+例如以下官方代码:
+```</p>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span4">first</div>
+        <div class="span8">second</div>
+    </div>
+</div>
+
+
+<p><code>
+效果为显示一行，左侧显示first字符，右侧显示second字符，非常简单。但如果添加注释，就发生问题了。
+</code></p>
+
+<div class="container-fluid">
+    <div class="row-fluid"><!--顶部logo-->
+        <div class="span4">first</div>
+        <div class="span8">second</div>
+    </div>
+</div>
+
+
+<p>```
+在row-fluid后添加注释&lt;!--顶部logo--&gt;,在IE7下运行显示first和second各自一行了！
+以上测试环境在IETester上测试，没在纯IE7下使用过。</p>
+]]></content>
+  </entry>
+  
+</feed>

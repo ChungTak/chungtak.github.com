@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: JAVA | 大小麦哲伦]]></title>
+  <link href="http://zhongdechan.github.com/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.com/"/>
+  <updated>2012-10-09T11:29:24+00:00</updated>
+  <id>http://zhongdechan.github.com/</id>
+  <author>
+    <name><![CDATA[zhongdechan]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Java  webservice  jax-rs 中文乱码]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/03/02/java-webservice-jax-rs-utf8/"/>
+    <updated>2011-03-02T12:08:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/03/02/java-webservice-jax-rs-utf8</id>
+    <content type="html"><![CDATA[<p>今天遇到个奇怪问题，系统用webservice 接收请求，然后调用电信的宽乐网关接口发送短信。
+系统编码已经统一为UTF-8，服务器为Ubuntu。系统日志编码正常，但手机接收到的中文短信为乱码。
+JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
+最后设置为 <strong>-Dfile.encoding=EUC-CN</strong> 竟然奇迹地成功了 ，运行一切正常。</p>
+]]></content>
+  </entry>
+  
+</feed>

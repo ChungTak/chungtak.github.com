@@ -1,114 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>大小麦哲伦</title>
-  <meta name="author" content="zhongdechan">
-
-  
-  <meta name="description" content="安装黑苹果真的很折腾，近来同事在v131上完美安装了lion，足足花了一天，不断的重启不断滴尝试。建议想用苹果的还是直接买白苹果省心。 安装情况 CPU:Core i3 （完美）
-主板: Intel HM 55 （完美）
-显卡:HD Graphics 3000 （QE/CI完美）
-声卡 （ &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://zhongdechan.github.com/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="大小麦哲伦" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-30173088-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">大小麦哲伦</a></h1>
-  
-    <h2>名字叫阿花，摇着尾巴 ... ...</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:zhongdechan.github.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[大小麦哲伦]]></title>
+  <link href="http://zhongdechan.github.com/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.com/"/>
+  <updated>2012-10-09T11:29:24+00:00</updated>
+  <id>http://zhongdechan.github.com/</id>
+  <author>
+    <name><![CDATA[zhongdechan]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2012/03/21/dell-vostro-v131-mac-lion/">Dell Vostro V131 Mac Lion 完美安装</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2012-03-21T20:29:00+00:00" pubdate data-updated="true">Mar 21<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>安装黑苹果真的很折腾，近来同事在v131上完美安装了lion，足足花了一天，不断的重启不断滴尝试。建议想用苹果的还是直接买白苹果省心。</p>
+  <entry>
+    <title type="html"><![CDATA[Dell Vostro v131 mac lion 完美安装]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/03/21/dell-vostro-v131-mac-lion/"/>
+    <updated>2012-03-21T20:29:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/03/21/dell-vostro-v131-mac-lion</id>
+    <content type="html"><![CDATA[<p>安装黑苹果真的很折腾，近来同事在v131上完美安装了lion，足足花了一天，不断的重启不断滴尝试。建议想用苹果的还是直接买白苹果省心。</p>
 
 <h3>安装情况</h3>
 
@@ -241,42 +151,15 @@ SleepEnabler.kext和VoodooBattery.kext</p></li>
 
 <p>编译后把dsdt.aml放到/Extra下，重启就可以在显示器里调节亮度了,不过每次重启后又要重新调节。
 不要用ACPIBacklight.kext，用了反而调节不了。不知道为何·~求解~~</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/17/mac-linux-android-adb-vendorid/">Mac Linux Android Adb vendorId</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-17T14:39:00+00:00" pubdate data-updated="true">Mar 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>android adb连接不到设备一般有2种解决方法：</p>
+  <entry>
+    <title type="html"><![CDATA[mac linux android adb vendorId]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/03/17/mac-linux-android-adb-vendorid/"/>
+    <updated>2012-03-17T14:39:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/03/17/mac-linux-android-adb-vendorid</id>
+    <content type="html"><![CDATA[<p>android adb连接不到设备一般有2种解决方法：</p>
 
 
 <ol>
@@ -336,81 +219,27 @@ Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</pre>
 
 <div>&nbsp;</div>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/02/15/parallels-shard-number-0-network/">Parallels Shard #0 Network</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-15T18:37:00+00:00" pubdate data-updated="true">Feb 15<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在mac lion下Parallels Desktop 7运行性能比vm快多了，启动xp欢迎界面都没看清楚就进去了，非常强悍。
+  <entry>
+    <title type="html"><![CDATA[Parallels shard #0 network]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/02/15/parallels-shard-number-0-network/"/>
+    <updated>2012-02-15T18:37:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/02/15/parallels-shard-number-0-network</id>
+    <content type="html"><![CDATA[<p>在mac lion下Parallels Desktop 7运行性能比vm快多了，启动xp欢迎界面都没看清楚就进去了，非常强悍。
 之前在pd7下安装了xp，后来不记得弄过什么网络配置，可能删除了无线网络之类的。
 今天进入pd7提示“在 <em>您mac上没有网络适配器为</em> Parallels shard #0虚拟网络。该网络适配器0将被断开。”
 修复方法是在pd7菜单:<strong>偏好设置-高级-网络“更改设置”-恢复默认设置；</strong>然后重启pd7就可以了</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/">Twitter Bootstrap Modal插件点击背景自动消失</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-14T10:31:00+00:00" pubdate data-updated="true">Nov 14<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>我是在Twitter Bootstrap2.0.1中遇到这个问题。
+  <entry>
+    <title type="html"><![CDATA[Twitter Bootstrap Modal插件点击背景自动消失]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/"/>
+    <updated>2011-11-14T10:31:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/11/14/twitter-bootstrap-modal-auto-hide</id>
+    <content type="html"><![CDATA[<p>我是在Twitter Bootstrap2.0.1中遇到这个问题。
 问题描述：
 直接调用</p>
 
@@ -428,81 +257,27 @@ Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</pre>
 
 
 <p>官方文档显示backdrop的类型是boolean，实际上设置true和false都不行，文档上有错误应该为String类型才对</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/">Can&#8217;t Locate Android SDK in Titanium Studio</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-11T14:28:00+00:00" pubdate data-updated="true">Sep 11<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在Titanium Studio中设置了Android sdk路径，但是运行的时候提示&#8221;Can&#8217;t locate Android SDK&#8221;
+  <entry>
+    <title type="html"><![CDATA[Can't locate Android SDK in Titanium Studio]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/"/>
+    <updated>2011-09-11T14:28:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio</id>
+    <content type="html"><![CDATA[<p>在Titanium Studio中设置了Android sdk路径，但是运行的时候提示&#8221;Can&#8217;t locate Android SDK&#8221;
 原因是Titanium sdk 对 Android sdk版本有要求:
 + <strong>Titaniun sdk 1.7 要求至少要Android sdk 2.1</strong>
 + <strong>Titaniun sdk 1.8 要求至少要Android sdk 2.2</strong></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/08/15/grails2-upgrade-exception/">Grails2 Upgrade Exception</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-15T12:15:00+00:00" pubdate data-updated="true">Aug 15<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Grails1.x升级到Grails2.x又遇到一个异常</p>
+  <entry>
+    <title type="html"><![CDATA[Grails2 upgrade exception]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/08/15/grails2-upgrade-exception/"/>
+    <updated>2011-08-15T12:15:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/08/15/grails2-upgrade-exception</id>
+    <content type="html"><![CDATA[<p>Grails1.x升级到Grails2.x又遇到一个异常</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -515,42 +290,15 @@ Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</pre>
 新版本的grails修改过默认web.xml的内容，因此与现在的web.xml冲突。
 解决办法是先把目前的web.xml文件备份并删除 ，运行一次 <em>grails install-templates</em> 命令生成新的web.xml
 再把新增的内容手动添加上去</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/">Grails2升级异常which Does Not Appear to Be a Command Object Class.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-10T12:15:00+00:00" pubdate data-updated="true">Aug 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天把老项目Grails1.1升级到Grails2.01，出现奇怪的错误</p>
+  <entry>
+    <title type="html"><![CDATA[Grails2升级异常which does not appear to be a command object class.]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/"/>
+    <updated>2011-08-10T12:15:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class</id>
+    <content type="html"><![CDATA[<p>今天把老项目Grails1.1升级到Grails2.01，出现奇怪的错误</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -582,120 +330,39 @@ grails1.x Controller的action写法必须为</p>
 
 
 <p>修复方法很简单，把public或者def开头的这些私有方法，声明为 <strong>private</strong> 就ok</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/07/mac-connect-samba-fail/">Mac 连接不了samba</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-07T12:13:00+00:00" pubdate data-updated="true">May 7<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Mac连接samba或者windows共享，一般方法直接在Finder &#8211;前往&#8211;连接服务器。中输入”smb://ServerIpAddress“ &nbsp;就可以了。
+  <entry>
+    <title type="html"><![CDATA[Mac 连接不了samba]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/05/07/mac-connect-samba-fail/"/>
+    <updated>2011-05-07T12:13:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/05/07/mac-connect-samba-fail</id>
+    <content type="html"><![CDATA[<p>Mac连接samba或者windows共享，一般方法直接在Finder &#8211;前往&#8211;连接服务器。中输入”smb://ServerIpAddress“ &nbsp;就可以了。
 今天连接一个新建的samba服务器，怎么连接也提示密码错误！
 原来是由于Samba 配置文件里面的 “netbios name” 名称太长，引起的。
 详细参考<a href="http://blog.sonitech.org/2011/05/04/%E8%A7%A3%E5%86%B3-mac-%E8%BF%9E%E6%8E%A5-samba3-%E7%9A%84%E9%97%AE%E9%A2%98/">连接</a></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/02/java-webservice-jax-rs-utf8/">Java Webservice Jax-rs 中文乱码</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-02T12:08:00+00:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天遇到个奇怪问题，系统用webservice 接收请求，然后调用电信的宽乐网关接口发送短信。
+  <entry>
+    <title type="html"><![CDATA[Java  webservice  jax-rs 中文乱码]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/03/02/java-webservice-jax-rs-utf8/"/>
+    <updated>2011-03-02T12:08:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/03/02/java-webservice-jax-rs-utf8</id>
+    <content type="html"><![CDATA[<p>今天遇到个奇怪问题，系统用webservice 接收请求，然后调用电信的宽乐网关接口发送短信。
 系统编码已经统一为UTF-8，服务器为Ubuntu。系统日志编码正常，但手机接收到的中文短信为乱码。
 JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
 最后设置为 <strong>-Dfile.encoding=EUC-CN</strong> 竟然奇迹地成功了 ，运行一切正常。</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/01/11/twitter-bootstrap-ie7-break-line/">Twitter Bootstrap IE7下断行问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-11T04:04:00+00:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>twitter bootstrap2.0有一个bug，在html上添加注释会引起断行（IE7下，IE8，9没问题）
+  <entry>
+    <title type="html"><![CDATA[twitter bootstrap IE7下断行问题]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line/"/>
+    <updated>2011-01-11T04:04:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line</id>
+    <content type="html"><![CDATA[<p>twitter bootstrap2.0有一个bug，在html上添加注释会引起断行（IE7下，IE8，9没问题）
 例如以下官方代码:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -730,106 +397,7 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
 
 <p>在row-fluid后添加注释&lt;!&#8211;顶部logo&#8211;&gt;,在IE7下运行显示first和second各自一行了！
 以上测试环境在IETester上测试，没在纯IE7下使用过。</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2012/03/21/dell-vostro-v131-mac-lion/">Dell Vostro v131 mac lion 完美安装</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/03/17/mac-linux-android-adb-vendorid/">mac linux android adb vendorId</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/02/15/parallels-shard-number-0-network/">Parallels shard #0 network</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/">Twitter Bootstrap Modal插件点击背景自动消失</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/">Can&#8217;t locate Android SDK in Titanium Studio</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-<section>
-  <h1>标签云</h1>
-    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 130.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 160.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 160.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 160.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 130.0%'>JAVA(1)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(2)</a> <a href='/blog/categories/titanium' style='font-size: 130.0%'>Titanium(1)</a> <a href='/blog/categories/webservice' style='font-size: 130.0%'>WebService(1)</a> </span>
-</section>
-<section>
-  <h1>博客分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (1)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
-</section>
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - zhongdechan -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'zhongdechansblog';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>
