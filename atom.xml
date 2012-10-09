@@ -4,7 +4,7 @@
   <title><![CDATA[大小麦哲伦]]></title>
   <link href="http://zhongdechan.github.com/atom.xml" rel="self"/>
   <link href="http://zhongdechan.github.com/"/>
-  <updated>2012-10-09T11:29:24+00:00</updated>
+  <updated>2012-10-09T21:10:32+00:00</updated>
   <id>http://zhongdechan.github.com/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[octopress 常见问题]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti/"/>
+    <updated>2012-10-09T14:12:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti</id>
+    <content type="html"><![CDATA[<ul>
+<li><strong>Mountain Lion 编译报错extconf.rb:21:in `<main>&#8217;: Only Darwin systems</strong></li>
+</ul>
+
+
+<p>Mountain Lion执行bundle install的时候，会给出下面的报错:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>creating Makefile
+</span><span class='line'>extconf.rb:21:in `&lt;main&gt;&#39;: Only Darwin systems
+</span><span class='line'>greater than 8 (Mac OS X 10.5+) are supported (RuntimeError)
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个报错的原因是octopress需要的<code>rb-fsevent</code>的版本是<code>0.4.3.1</code>，这个版本还不支持<code>Mountain Lion</code>。
+简单的处理办法是修改~/.rvm/gems/ruby-1.9.3-p194/gems/rb-fsevent-0.4.3.1/ext/extconf.rb文件，找到19行，如下:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">sdk_version</span> <span class="o">=</span> <span class="o">{</span> <span class="nv">9</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.5&#39;</span>, <span class="nv">10</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.6&#39;</span>, <span class="nv">11</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.7&#39;</span> <span class="o">}[</span>darwin_version<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改为</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">sdk_version</span> <span class="o">=</span> <span class="o">{</span> <span class="nv">9</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.5&#39;</span>, <span class="nv">10</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.6&#39;</span>, <span class="nv">11</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.7&#39;</span>,12<span class="o">=</span>&gt;<span class="s1">&#39;10.8&#39;</span> <span class="o">}[</span>darwin_version<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>删除第24行内容，如下</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>-isysroot <span class="c">#{xcode_path}/SDKs/MacOSX#{sdk_version}.sdk</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后执行<code>bundle update</code>编译安装即可。</p>
+
+<!--more-->
+
+
+<ul>
+<li><strong>rake deploy不能发布，但是预览正常。检查github上source分支代码已更新，但master仍为老代码。</strong></li>
+</ul>
+
+
+<p>rake操作应该在source分支下进行，若是刚从github里clone下来的，请先执行<code>$ git checkout source</code></p>
+
+<p>发现是因为代码是新从github下clone下来的，未进行初始化deploy.需要执行<code>$ rake setup_github_pages</code>进行初始化。</p>
+
+<ul>
+<li><p><strong>fatal: &#8216;octopress&#8217; does not appear to be a git repository</strong>
+命令行执行：<code>$ git remote add octopress https://github.com/imathis/octopress.git</code></p></li>
+<li><p><strong>undefined method `[]&#39; for nil:NilClass</strong></p></li>
+</ul>
+
+
+<p>执行<code>$ rake setup_github_pages</code>初始化出现以下异常</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>rake aborted
+</span><span class='line'>!undefined method `[]&#39; for nil:NilClass
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>原因是url写错，正确格式为<code>git@github.com:your_username/your_username.github.com</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Dell Vostro v131 mac lion 完美安装]]></title>
@@ -34,11 +111,14 @@ SD Card reader(完美)
 蓝牙(无驱动)
 WiFi(无驱动) 这款卡太老，没驱动的，建议买个usb网卡替代。<a href="http://www.360buy.com/product/389343.html">EDUP EP-N8513 隐藏型无线网卡</a></p>
 
+<!--more-->
+
+
 <h3>安装注意事项</h3>
 
 <p>安装基础教程这里就不说了，pcbeta上有写得非常好的 。<a href="http://bbs.pcbeta.com/viewthread-920341-1-1.html">lion图文详细安装教程</a></p>
 
-<p>这里指出这款机器安装的特别要注意的地方
+<p>这里指出这款机器安装的特别要注意的地方(10.8支持很好，不需以下步骤)
 1.  保证所有硬盘卷轴不能有中文，不然会导致安装界面鼠标键盘不能用
 2.  如果安装界面usb鼠标键盘仍然不能用，把/System/Library/Extensions/AppleIntel<strong> 、 Ati<em> 、Geforce</em></strong> 和 NV** 驱动都删掉
 3.  安装的时候usb要用左边的usb2.0接口，右面的usb3.0接口要进入系统后安装相应驱动才能使用
@@ -68,7 +148,7 @@ WiFi(无驱动) 这款卡太老，没驱动的，建议买个usb网卡替代。<
 </ul>
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -79,17 +159,18 @@ WiFi(无驱动) 这款卡太老，没驱动的，建议买个usb网卡替代。<
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>System Utilities
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; ElliottForceLegacyRTC
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; EvOreboot
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; FakeSMC
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; IOUSBFamily Rollback
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; NullCPUPowerManagement
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; USB 3.0
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; PS/2 Keyboard/Mice...
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Network - &gt; Lnx2Mac's Realtek...
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>System Utilities
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; ElliottForceLegacyRTC
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; EvOreboot
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; FakeSMC
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; IOUSBFamily Rollback
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; NullCPUPowerManagement
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; USB 3.0
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; PS/2 Keyboard/Mice...
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Network - &gt; Lnx2Mac&#39;s Realtek...
 </span><span class='line'>Customization -&gt; System Definitions -&gt; MacBook Pro - &gt; MacBook Pro 8,1
-</span><span class='line'>OSx86 Software -&gt; 全选</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>OSx86 Software -&gt; 全选
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ul>
@@ -98,14 +179,16 @@ WiFi(无驱动) 这款卡太老，没驱动的，建议买个usb网卡替代。<
 </ul>
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Audio -&gt; Universal -&gt; VoodooHDA .2.7.3</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Audio -&gt; Universal -&gt; VoodooHDA .2.7.3
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>删除自带的AppleHDA</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rm -r AppleHDA.kext   (在/System/Library/Extensions)</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm -r AppleHDA.kext   <span class="o">(</span>在/System/Library/Extensions<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ul>
@@ -127,7 +210,7 @@ SleepEnabler.kext和VoodooBattery.kext</p></li>
 推荐使用dsdt editor 导出dsdt，该软件能自动fix错误和编译。
 在dsdt中搜索PWRB ，添加以下这个Device (PNLF)方法，原来的内容不要删</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -137,16 +220,17 @@ SleepEnabler.kext和VoodooBattery.kext</p></li>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Device (PWRB)
-</span><span class='line'>{
-</span><span class='line'>         Device (PNLF)
-</span><span class='line'>         {
-</span><span class='line'>                  Name (_HID, EisaId ("APP0002"))
-</span><span class='line'>                  Name (_CID, "backlight")
-</span><span class='line'>                  Name (_UID, 0x0A)
-</span><span class='line'>                  Name (_STA, 0x0B)
-</span><span class='line'>         }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Device <span class="o">(</span>PWRB<span class="o">)</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>         Device <span class="o">(</span>PNLF<span class="o">)</span>
+</span><span class='line'>         <span class="o">{</span>
+</span><span class='line'>                  Name <span class="o">(</span>_HID, EisaId <span class="o">(</span><span class="s2">&quot;APP0002&quot;</span><span class="o">))</span>
+</span><span class='line'>                  Name <span class="o">(</span>_CID, <span class="s2">&quot;backlight&quot;</span><span class="o">)</span>
+</span><span class='line'>                  Name <span class="o">(</span>_UID, 0x0A<span class="o">)</span>
+</span><span class='line'>                  Name <span class="o">(</span>_STA, 0x0B<span class="o">)</span>
+</span><span class='line'>         <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>编译后把dsdt.aml放到/Extra下，重启就可以在显示器里调节亮度了,不过每次重启后又要重新调节。

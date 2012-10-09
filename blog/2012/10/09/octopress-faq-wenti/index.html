@@ -5,18 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>twitter bootstrap IE7下断行问题 - 大小麦哲伦</title>
+  <title>octopress 常见问题 - 大小麦哲伦</title>
   <meta name="author" content="zhongdechan">
 
   
-  <meta name="description" content="twitter bootstrap2.0有一个bug，在html上添加注释会引起断行（IE7下，IE8，9没问题）
-例如以下官方代码: 1
+  <meta name="description" content="Mountain Lion 编译报错extconf.rb:21:in `&#8217;: Only Darwin systems Mountain Lion执行bundle install的时候，会给出下面的报错: 1
 2
 3
-4
-5
-6
-&lt;div class="container-fluid"&gt; &lt;div class="row-fluid"&gt; &lt &hellip;">
+creating Makefile
+extconf.rb:21:in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -25,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line/">
+  <link rel="canonical" href="http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -86,7 +83,7 @@
   
   <header>
     
-      <h1 class="entry-title">Twitter Bootstrap IE7下断行问题</h1>
+      <h1 class="entry-title">Octopress 常见问题</h1>
     
     
       <p class="meta">
@@ -102,48 +99,82 @@
   
 
 
-<time datetime="2011-01-11T04:04:00+00:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
+<time datetime="2012-10-09T14:12:00+00:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>twitter bootstrap2.0有一个bug，在html上添加注释会引起断行（IE7下，IE8，9没问题）
-例如以下官方代码:</p>
+<div class="entry-content"><ul>
+<li><strong>Mountain Lion 编译报错extconf.rb:21:in `<main>&#8217;: Only Darwin systems</strong></li>
+</ul>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+
+<p>Mountain Lion执行bundle install的时候，会给出下面的报错:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="container-fluid"&gt;
-</span><span class='line'>    &lt;div class="row-fluid"&gt;
-</span><span class='line'>        &lt;div class="span4"&gt;first&lt;/div&gt;
-</span><span class='line'>        &lt;div class="span8"&gt;second&lt;/div&gt;
-</span><span class='line'>    &lt;/div&gt;
-</span><span class='line'>&lt;/div&gt;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>creating Makefile
+</span><span class='line'>extconf.rb:21:in `&lt;main&gt;&#39;: Only Darwin systems
+</span><span class='line'>greater than 8 (Mac OS X 10.5+) are supported (RuntimeError)
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>效果为显示一行，左侧显示first字符，右侧显示second字符，非常简单。但如果添加注释，就发生问题了。</p>
+<p>这个报错的原因是octopress需要的<code>rb-fsevent</code>的版本是<code>0.4.3.1</code>，这个版本还不支持<code>Mountain Lion</code>。
+简单的处理办法是修改~/.rvm/gems/ruby-1.9.3-p194/gems/rb-fsevent-0.4.3.1/ext/extconf.rb文件，找到19行，如下:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">sdk_version</span> <span class="o">=</span> <span class="o">{</span> <span class="nv">9</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.5&#39;</span>, <span class="nv">10</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.6&#39;</span>, <span class="nv">11</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.7&#39;</span> <span class="o">}[</span>darwin_version<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改为</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">sdk_version</span> <span class="o">=</span> <span class="o">{</span> <span class="nv">9</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.5&#39;</span>, <span class="nv">10</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.6&#39;</span>, <span class="nv">11</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.7&#39;</span>,12<span class="o">=</span>&gt;<span class="s1">&#39;10.8&#39;</span> <span class="o">}[</span>darwin_version<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>删除第24行内容，如下</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>-isysroot <span class="c">#{xcode_path}/SDKs/MacOSX#{sdk_version}.sdk</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后执行<code>bundle update</code>编译安装即可。</p>
+
+<!--more-->
+
+
+<ul>
+<li><strong>rake deploy不能发布，但是预览正常。检查github上source分支代码已更新，但master仍为老代码。</strong></li>
+</ul>
+
+
+<p>rake操作应该在source分支下进行，若是刚从github里clone下来的，请先执行<code>$ git checkout source</code></p>
+
+<p>发现是因为代码是新从github下clone下来的，未进行初始化deploy.需要执行<code>$ rake setup_github_pages</code>进行初始化。</p>
+
+<ul>
+<li><p><strong>fatal: &#8216;octopress&#8217; does not appear to be a git repository</strong>
+命令行执行：<code>$ git remote add octopress https://github.com/imathis/octopress.git</code></p></li>
+<li><p><strong>undefined method `[]&#39; for nil:NilClass</strong></p></li>
+</ul>
+
+
+<p>执行<code>$ rake setup_github_pages</code>初始化出现以下异常</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="container-fluid"&gt;
-</span><span class='line'>    &lt;div class="row-fluid"&gt;&lt;!--顶部logo--&gt;
-</span><span class='line'>        &lt;div class="span4"&gt;first&lt;/div&gt;
-</span><span class='line'>        &lt;div class="span8"&gt;second&lt;/div&gt;
-</span><span class='line'>    &lt;/div&gt;
-</span><span class='line'>&lt;/div&gt;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>rake aborted
+</span><span class='line'>!undefined method `[]&#39; for nil:NilClass
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>在row-fluid后添加注释&lt;!&#8211;顶部logo&#8211;&gt;,在IE7下运行显示first和second各自一行了！
-以上测试环境在IETester上测试，没在纯IE7下使用过。</p>
+<p>原因是url写错，正确格式为<code>git@github.com:your_username/your_username.github.com</code></p>
 </div>
 
 
@@ -166,12 +197,12 @@
   
 
 
-<time datetime="2011-01-11T04:04:00+00:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
+<time datetime="2012-10-09T14:12:00+00:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/css/'>CSS</a>
+    <a class='category' href='/blog/categories/web/'>Web</a>
   
 </span>
 
@@ -180,7 +211,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line/" data-via="" data-counturl="http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti/" data-via="" data-counturl="http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti/" >Tweet</a>
   
   
   
@@ -189,8 +220,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2012/03/21/dell-vostro-v131-mac-lion/" title="Previous Post: Dell Vostro v131 mac lion 完美安装">&laquo; Dell Vostro v131 mac lion 完美安装</a>
       
-        <a class="basic-alignment right" href="/blog/2011/03/02/java-webservice-jax-rs-utf8/" title="Next Post: Java  webservice  jax-rs 中文乱码">Java  webservice  jax-rs 中文乱码 &raquo;</a>
       
     </p>
   </footer>
@@ -265,8 +296,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line/';
-        var disqus_url = 'http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line/';
+        var disqus_identifier = 'http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti/';
+        var disqus_url = 'http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti/';
         var disqus_script = 'embed.js';
       
     (function () {

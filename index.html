@@ -9,10 +9,11 @@
   <meta name="author" content="zhongdechan">
 
   
-  <meta name="description" content="安装黑苹果真的很折腾，近来同事在v131上完美安装了lion，足足花了一天，不断的重启不断滴尝试。建议想用苹果的还是直接买白苹果省心。 安装情况 CPU:Core i3 （完美）
-主板: Intel HM 55 （完美）
-显卡:HD Graphics 3000 （QE/CI完美）
-声卡 （ &hellip;">
+  <meta name="description" content="Mountain Lion 编译报错extconf.rb:21:in `&#8217;: Only Darwin systems Mountain Lion执行bundle install的时候，会给出下面的报错: 1
+2
+3
+creating Makefile
+extconf.rb:21:in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +86,85 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/10/09/octopress-faq-wenti/">Octopress 常见问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-09T14:12:00+00:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li><strong>Mountain Lion 编译报错extconf.rb:21:in `<main>&#8217;: Only Darwin systems</strong></li>
+</ul>
+
+
+<p>Mountain Lion执行bundle install的时候，会给出下面的报错:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>creating Makefile
+</span><span class='line'>extconf.rb:21:in `&lt;main&gt;&#39;: Only Darwin systems
+</span><span class='line'>greater than 8 (Mac OS X 10.5+) are supported (RuntimeError)
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个报错的原因是octopress需要的<code>rb-fsevent</code>的版本是<code>0.4.3.1</code>，这个版本还不支持<code>Mountain Lion</code>。
+简单的处理办法是修改~/.rvm/gems/ruby-1.9.3-p194/gems/rb-fsevent-0.4.3.1/ext/extconf.rb文件，找到19行，如下:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">sdk_version</span> <span class="o">=</span> <span class="o">{</span> <span class="nv">9</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.5&#39;</span>, <span class="nv">10</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.6&#39;</span>, <span class="nv">11</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.7&#39;</span> <span class="o">}[</span>darwin_version<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改为</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">sdk_version</span> <span class="o">=</span> <span class="o">{</span> <span class="nv">9</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.5&#39;</span>, <span class="nv">10</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.6&#39;</span>, <span class="nv">11</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.7&#39;</span>,12<span class="o">=</span>&gt;<span class="s1">&#39;10.8&#39;</span> <span class="o">}[</span>darwin_version<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>删除第24行内容，如下</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>-isysroot <span class="c">#{xcode_path}/SDKs/MacOSX#{sdk_version}.sdk</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后执行<code>bundle update</code>编译安装即可。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/09/octopress-faq-wenti/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/03/21/dell-vostro-v131-mac-lion/">Dell Vostro V131 Mac Lion 完美安装</a></h1>
     
     
@@ -124,125 +204,12 @@ SD Card reader(完美)
 蓝牙(无驱动)
 WiFi(无驱动) 这款卡太老，没驱动的，建议买个usb网卡替代。<a href="http://www.360buy.com/product/389343.html">EDUP EP-N8513 隐藏型无线网卡</a></p>
 
-<h3>安装注意事项</h3>
-
-<p>安装基础教程这里就不说了，pcbeta上有写得非常好的 。<a href="http://bbs.pcbeta.com/viewthread-920341-1-1.html">lion图文详细安装教程</a></p>
-
-<p>这里指出这款机器安装的特别要注意的地方
-1.  保证所有硬盘卷轴不能有中文，不然会导致安装界面鼠标键盘不能用
-2.  如果安装界面usb鼠标键盘仍然不能用，把/System/Library/Extensions/AppleIntel<strong> 、 Ati<em> 、Geforce</em></strong> 和 NV** 驱动都删掉
-3.  安装的时候usb要用左边的usb2.0接口，右面的usb3.0接口要进入系统后安装相应驱动才能使用
-4.  使用-f -v -x进入</p>
-
-<p><em>经同事的不懈努力测试，按上面方法，系统绝对能正常安装。</em></p>
-
-<p>安装好后第一件事就是把AppleIntel驱动放到/System/Library/Extensions，<strong>但严重注意这些驱动不是安装盘的AppleIntel</strong>
-去pcbeta上搜索一下lion的原版驱动，必须包含AppleIntelHD3000Graphics**开头的驱动（安装盘上没这些，正常不删文件安装是有这些驱动的）</p>
-
-<h3>必备软件</h3>
-
-<ol>
-<li><a href="http://support.apple.com/kb/DL1484">10.7.3 Combo Update</a>   (升级包)</li>
-<li><a href="http://www.tonymacx86.com/C:Dq-OCPpT/MultiBeast-4.3.1.zip">MultiBeast-4.3.1 for lion</a>           （驱动包）</li>
-<li>Kext Utility          (驱动权限重建MultiBeast自带)</li>
-<li>SleepEnabler.kext     解决睡眠问题</li>
-<li>VoodooBattery.kext    电池显示</li>
-</ol>
-
-
-<h3>驱动安装</h3>
-
-<ul>
-<li>先安装<em>10.7.3 Combo Update</em> ，安装完后<strong>不要重启!!</strong></li>
-<li>运行MultiBeast,选择下面提到的驱动</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>System Utilities
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; ElliottForceLegacyRTC
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; EvOreboot
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; FakeSMC
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; IOUSBFamily Rollback
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; NullCPUPowerManagement
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; USB 3.0
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; PS/2 Keyboard/Mice...
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Network - &gt; Lnx2Mac's Realtek...
-</span><span class='line'>Customization -&gt; System Definitions -&gt; MacBook Pro - &gt; MacBook Pro 8,1
-</span><span class='line'>OSx86 Software -&gt; 全选</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li><p>点击下一步、继续继续。安装完后，<strong>不要重启</strong>。</p></li>
-<li><p>在运行一次MultiBeast，只选择声卡驱动</p></li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Audio -&gt; Universal -&gt; VoodooHDA .2.7.3</span></code></pre></td></tr></table></div></figure>
-
-
-<p>删除自带的AppleHDA</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rm -r AppleHDA.kext   (在/System/Library/Extensions)</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li><p>安装睡眠和电池驱动
-SleepEnabler.kext和VoodooBattery.kext</p></li>
-<li><p>使用Kext Utility重建缓存</p></li>
-<li>重启，使用-f参数</li>
-</ul>
-
-
-<p>按上面的步骤重启后，系统声卡、显卡、网卡、usb3.0都能驱动的了。</p>
-
-<p>现在右侧的USB3.0接口可以完美使用了，但是左侧的USB2.0却不能使用。
-要驱动左侧的USB2.0和SD读卡器，需要删除AppleHPET.kext（<strong>要备份</strong>，这个在我机器上有效，其他机器不一定）</p>
-
-<h3>显示器亮度</h3>
-
-<p>安装好的系统不能调节亮度，需要在dsdt上添加几行代码
-推荐使用dsdt editor 导出dsdt，该软件能自动fix错误和编译。
-在dsdt中搜索PWRB ，添加以下这个Device (PNLF)方法，原来的内容不要删</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Device (PWRB)
-</span><span class='line'>{
-</span><span class='line'>         Device (PNLF)
-</span><span class='line'>         {
-</span><span class='line'>                  Name (_HID, EisaId ("APP0002"))
-</span><span class='line'>                  Name (_CID, "backlight")
-</span><span class='line'>                  Name (_UID, 0x0A)
-</span><span class='line'>                  Name (_STA, 0x0B)
-</span><span class='line'>         }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>编译后把dsdt.aml放到/Extra下，重启就可以在显示器里调节亮度了,不过每次重启后又要重新调节。
-不要用ACPIBacklight.kext，用了反而调节不了。不知道为何·~求解~~</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/03/21/dell-vostro-v131-mac-lion/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -667,77 +634,9 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/01/11/twitter-bootstrap-ie7-break-line/">Twitter Bootstrap IE7下断行问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-11T04:04:00+00:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>twitter bootstrap2.0有一个bug，在html上添加注释会引起断行（IE7下，IE8，9没问题）
-例如以下官方代码:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="container-fluid"&gt;
-</span><span class='line'>    &lt;div class="row-fluid"&gt;
-</span><span class='line'>        &lt;div class="span4"&gt;first&lt;/div&gt;
-</span><span class='line'>        &lt;div class="span8"&gt;second&lt;/div&gt;
-</span><span class='line'>    &lt;/div&gt;
-</span><span class='line'>&lt;/div&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>效果为显示一行，左侧显示first字符，右侧显示second字符，非常简单。但如果添加注释，就发生问题了。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="container-fluid"&gt;
-</span><span class='line'>    &lt;div class="row-fluid"&gt;&lt;!--顶部logo--&gt;
-</span><span class='line'>        &lt;div class="span4"&gt;first&lt;/div&gt;
-</span><span class='line'>        &lt;div class="span8"&gt;second&lt;/div&gt;
-</span><span class='line'>    &lt;/div&gt;
-</span><span class='line'>&lt;/div&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>在row-fluid后添加注释&lt;!&#8211;顶部logo&#8211;&gt;,在IE7下运行显示first和second各自一行了！
-以上测试环境在IETester上测试，没在纯IE7下使用过。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -748,6 +647,10 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/09/octopress-faq-wenti/">octopress 常见问题</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/03/21/dell-vostro-v131-mac-lion/">Dell Vostro v131 mac lion 完美安装</a>
@@ -765,10 +668,6 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
         <a href="/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/">Twitter Bootstrap Modal插件点击背景自动消失</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/">Can&#8217;t locate Android SDK in Titanium Studio</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -778,11 +677,11 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
 
 <section>
   <h1>标签云</h1>
-    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 130.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 160.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 160.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 160.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 130.0%'>JAVA(1)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(2)</a> <a href='/blog/categories/titanium' style='font-size: 130.0%'>Titanium(1)</a> <a href='/blog/categories/webservice' style='font-size: 130.0%'>WebService(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 130.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 160.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 160.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 160.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 130.0%'>JAVA(1)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(2)</a> <a href='/blog/categories/titanium' style='font-size: 130.0%'>Titanium(1)</a> <a href='/blog/categories/web' style='font-size: 130.0%'>Web(1)</a> <a href='/blog/categories/webservice' style='font-size: 130.0%'>WebService(1)</a> </span>
 </section>
 <section>
   <h1>博客分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (1)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (1)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/web'>Web (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
 </section>
 
   

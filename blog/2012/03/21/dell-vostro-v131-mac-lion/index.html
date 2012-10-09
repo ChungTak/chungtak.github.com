@@ -121,11 +121,14 @@ SD Card reader(完美)
 蓝牙(无驱动)
 WiFi(无驱动) 这款卡太老，没驱动的，建议买个usb网卡替代。<a href="http://www.360buy.com/product/389343.html">EDUP EP-N8513 隐藏型无线网卡</a></p>
 
+<!--more-->
+
+
 <h3>安装注意事项</h3>
 
 <p>安装基础教程这里就不说了，pcbeta上有写得非常好的 。<a href="http://bbs.pcbeta.com/viewthread-920341-1-1.html">lion图文详细安装教程</a></p>
 
-<p>这里指出这款机器安装的特别要注意的地方
+<p>这里指出这款机器安装的特别要注意的地方(10.8支持很好，不需以下步骤)
 1.  保证所有硬盘卷轴不能有中文，不然会导致安装界面鼠标键盘不能用
 2.  如果安装界面usb鼠标键盘仍然不能用，把/System/Library/Extensions/AppleIntel<strong> 、 Ati<em> 、Geforce</em></strong> 和 NV** 驱动都删掉
 3.  安装的时候usb要用左边的usb2.0接口，右面的usb3.0接口要进入系统后安装相应驱动才能使用
@@ -155,7 +158,7 @@ WiFi(无驱动) 这款卡太老，没驱动的，建议买个usb网卡替代。<
 </ul>
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -166,17 +169,18 @@ WiFi(无驱动) 这款卡太老，没驱动的，建议买个usb网卡替代。<
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>System Utilities
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; ElliottForceLegacyRTC
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; EvOreboot
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; FakeSMC
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; IOUSBFamily Rollback
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; NullCPUPowerManagement
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; USB 3.0
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Miscellaneous -&gt; PS/2 Keyboard/Mice...
-</span><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Network - &gt; Lnx2Mac's Realtek...
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>System Utilities
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; ElliottForceLegacyRTC
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; EvOreboot
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; FakeSMC
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; IOUSBFamily Rollback
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; NullCPUPowerManagement
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; USB 3.0
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; PS/2 Keyboard/Mice...
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Network - &gt; Lnx2Mac&#39;s Realtek...
 </span><span class='line'>Customization -&gt; System Definitions -&gt; MacBook Pro - &gt; MacBook Pro 8,1
-</span><span class='line'>OSx86 Software -&gt; 全选</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>OSx86 Software -&gt; 全选
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ul>
@@ -185,14 +189,16 @@ WiFi(无驱动) 这款卡太老，没驱动的，建议买个usb网卡替代。<
 </ul>
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Drivers & Bootloaders -&gt; Kexts & Enablers -&gt; Audio -&gt; Universal -&gt; VoodooHDA .2.7.3</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Audio -&gt; Universal -&gt; VoodooHDA .2.7.3
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>删除自带的AppleHDA</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rm -r AppleHDA.kext   (在/System/Library/Extensions)</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm -r AppleHDA.kext   <span class="o">(</span>在/System/Library/Extensions<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <ul>
@@ -214,7 +220,7 @@ SleepEnabler.kext和VoodooBattery.kext</p></li>
 推荐使用dsdt editor 导出dsdt，该软件能自动fix错误和编译。
 在dsdt中搜索PWRB ，添加以下这个Device (PNLF)方法，原来的内容不要删</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -224,16 +230,17 @@ SleepEnabler.kext和VoodooBattery.kext</p></li>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Device (PWRB)
-</span><span class='line'>{
-</span><span class='line'>         Device (PNLF)
-</span><span class='line'>         {
-</span><span class='line'>                  Name (_HID, EisaId ("APP0002"))
-</span><span class='line'>                  Name (_CID, "backlight")
-</span><span class='line'>                  Name (_UID, 0x0A)
-</span><span class='line'>                  Name (_STA, 0x0B)
-</span><span class='line'>         }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Device <span class="o">(</span>PWRB<span class="o">)</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>         Device <span class="o">(</span>PNLF<span class="o">)</span>
+</span><span class='line'>         <span class="o">{</span>
+</span><span class='line'>                  Name <span class="o">(</span>_HID, EisaId <span class="o">(</span><span class="s2">&quot;APP0002&quot;</span><span class="o">))</span>
+</span><span class='line'>                  Name <span class="o">(</span>_CID, <span class="s2">&quot;backlight&quot;</span><span class="o">)</span>
+</span><span class='line'>                  Name <span class="o">(</span>_UID, 0x0A<span class="o">)</span>
+</span><span class='line'>                  Name <span class="o">(</span>_STA, 0x0B<span class="o">)</span>
+</span><span class='line'>         <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>编译后把dsdt.aml放到/Extra下，重启就可以在显示器里调节亮度了,不过每次重启后又要重新调节。
@@ -280,6 +287,8 @@ SleepEnabler.kext和VoodooBattery.kext</p></li>
         <a class="basic-alignment left" href="/blog/2012/03/17/mac-linux-android-adb-vendorid/" title="Previous Post: mac linux android adb vendorId">&laquo; mac linux android adb vendorId</a>
       
       
+        <a class="basic-alignment right" href="/blog/2012/10/09/octopress-faq-wenti/" title="Next Post: octopress 常见问题">octopress 常见问题 &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -299,6 +308,10 @@ SleepEnabler.kext和VoodooBattery.kext</p></li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/09/octopress-faq-wenti/">octopress 常见问题</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/03/21/dell-vostro-v131-mac-lion/">Dell Vostro v131 mac lion 完美安装</a>
       </li>
     
@@ -314,10 +327,6 @@ SleepEnabler.kext和VoodooBattery.kext</p></li>
         <a href="/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/">Twitter Bootstrap Modal插件点击背景自动消失</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/">Can't locate Android SDK in Titanium Studio</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -327,11 +336,11 @@ SleepEnabler.kext和VoodooBattery.kext</p></li>
 
 <section>
   <h1>标签云</h1>
-    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 130.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 160.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 160.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 160.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 130.0%'>JAVA(1)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(2)</a> <a href='/blog/categories/titanium' style='font-size: 130.0%'>Titanium(1)</a> <a href='/blog/categories/webservice' style='font-size: 130.0%'>WebService(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 130.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 160.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 160.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 160.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 130.0%'>JAVA(1)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(2)</a> <a href='/blog/categories/titanium' style='font-size: 130.0%'>Titanium(1)</a> <a href='/blog/categories/web' style='font-size: 130.0%'>Web(1)</a> <a href='/blog/categories/webservice' style='font-size: 130.0%'>WebService(1)</a> </span>
 </section>
 <section>
   <h1>博客分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (1)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (1)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/web'>Web (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
 </section>
 
   
