@@ -4,7 +4,7 @@
   <title><![CDATA[大小麦哲伦]]></title>
   <link href="http://zhongdechan.github.com/atom.xml" rel="self"/>
   <link href="http://zhongdechan.github.com/"/>
-  <updated>2012-10-09T21:27:29+00:00</updated>
+  <updated>2012-10-10T10:13:11+00:00</updated>
   <id>http://zhongdechan.github.com/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[解决Windows与Mac时间不同步]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/10/mac-windows-time-tongbu/"/>
+    <updated>2012-10-10T09:48:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/10/mac-windows-time-tongbu</id>
+    <content type="html"><![CDATA[<p>安装Windows 和 Mac 苹果双系统后，系统时间出现不同步。有两种简单的解决办法：</p>
+
+<ul>
+<li>方法一：在Mac下<code>系统编好设置</code> －> <code>时间与日期</code> -> <code>时区</code> 最接近的城市选择为<code>雷克雅未克 - 冰岛</code></li>
+</ul>
+
+
+<p><img src="http://ww3.sinaimg.cn/large/a74ecc4cjw1dxpvrxc7f8j.jpg" alt="Smaller icon" /></p>
+
+<ul>
+<li>方法二：修改windows注册表，在<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\</code>中加一项DWORD，<code>RealTimeIsUniversal</code>，把值设为 <strong>1</strong>。</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[octopress 常见问题]]></title>

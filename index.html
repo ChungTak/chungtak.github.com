@@ -9,11 +9,7 @@
   <meta name="author" content="zhongdechan">
 
   
-  <meta name="description" content="Mountain Lion 编译报错extconf.rb:21:in `&#8217;: Only Darwin systems Mountain Lion执行bundle install的时候，会给出下面的报错: 1
-2
-3
-creating Makefile
-extconf.rb:21:in &hellip;">
+  <meta name="description" content="安装Windows 和 Mac 苹果双系统后，系统时间出现不同步。有两种简单的解决办法： 方法一：在Mac下系统编好设置 －> 时间与日期 -> 时区 最接近的城市选择为雷克雅未克 - 冰岛 方法二：修改windows注册表，在HKEY_LOCAL_MACHINE\SYSTEM\ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +76,54 @@ extconf.rb:21:in &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/10/mac-windows-time-tongbu/">解决Windows与Mac时间不同步</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-10T09:48:00+00:00" pubdate data-updated="true">Oct 10<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>安装Windows 和 Mac 苹果双系统后，系统时间出现不同步。有两种简单的解决办法：</p>
+
+<ul>
+<li>方法一：在Mac下<code>系统编好设置</code> －> <code>时间与日期</code> -> <code>时区</code> 最接近的城市选择为<code>雷克雅未克 - 冰岛</code></li>
+</ul>
+
+
+<p><img src="http://ww3.sinaimg.cn/large/a74ecc4cjw1dxpvrxc7f8j.jpg" alt="Smaller icon" /></p>
+
+<ul>
+<li>方法二：修改windows注册表，在<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\</code>中加一项DWORD，<code>RealTimeIsUniversal</code>，把值设为 <strong>1</strong>。</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -595,45 +639,6 @@ grails1.x Controller的action写法必须为</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/02/java-webservice-jax-rs-utf8/">Java Webservice Jax-rs 中文乱码</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-02T12:08:00+00:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天遇到个奇怪问题，系统用webservice 接收请求，然后调用电信的宽乐网关接口发送短信。
-系统编码已经统一为UTF-8，服务器为Ubuntu。系统日志编码正常，但手机接收到的中文短信为乱码。
-JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
-最后设置为 <strong>-Dfile.encoding=EUC-CN</strong> 竟然奇迹地成功了 ，运行一切正常。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -647,6 +652,10 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/10/mac-windows-time-tongbu/">解决Windows与Mac时间不同步</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/10/09/octopress-faq-wenti/">octopress 常见问题</a>
@@ -664,10 +673,6 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
         <a href="/blog/2012/02/15/parallels-shard-number-0-network/">Parallels shard #0 network</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/">Twitter Bootstrap Modal插件点击背景自动消失</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -677,11 +682,11 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
 
 <section>
   <h1>标签云</h1>
-    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 130.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 160.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 160.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 160.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 130.0%'>JAVA(1)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(2)</a> <a href='/blog/categories/titanium' style='font-size: 130.0%'>Titanium(1)</a> <a href='/blog/categories/web' style='font-size: 130.0%'>Web(1)</a> <a href='/blog/categories/webservice' style='font-size: 130.0%'>WebService(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 120.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 140.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 140.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 140.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 120.0%'>JAVA(1)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(3)</a> <a href='/blog/categories/titanium' style='font-size: 120.0%'>Titanium(1)</a> <a href='/blog/categories/web' style='font-size: 120.0%'>Web(1)</a> <a href='/blog/categories/webservice' style='font-size: 120.0%'>WebService(1)</a> </span>
 </section>
 <section>
   <h1>博客分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (1)</a></li><li><a href='/blog/categories/mac'>Mac (2)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/web'>Web (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (1)</a></li><li><a href='/blog/categories/mac'>Mac (3)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/web'>Web (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
 </section>
 
   

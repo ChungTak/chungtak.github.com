@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Parallels shard #0 network - 大小麦哲伦</title>
+  <title>解决Windows与Mac时间不同步 - 大小麦哲伦</title>
   <meta name="author" content="zhongdechan">
 
   
-  <meta name="description" content="在mac lion下Parallels Desktop 7运行性能比vm快多了，启动xp欢迎界面都没看清楚就进去了，非常强悍。
-之前在pd7下安装了xp，后来不记得弄过什么网络配置，可能删除了无线网络之类的。
-今天进入pd7提示“在 您mac上没有网络适配器为 Parallels shard # &hellip;">
+  <meta name="description" content="安装Windows 和 Mac 苹果双系统后，系统时间出现不同步。有两种简单的解决办法： 方法一：在Mac下系统编好设置 －> 时间与日期 -> 时区 最接近的城市选择为雷克雅未克 - 冰岛 方法二：修改windows注册表，在HKEY_LOCAL_MACHINE\SYSTEM\ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zhongdechan.github.com/blog/2012/02/15/parallels-shard-number-0-network/">
+  <link rel="canonical" href="http://zhongdechan.github.com/blog/2012/10/10/mac-windows-time-tongbu/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -81,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">Parallels Shard #0 Network</h1>
+      <h1 class="entry-title">解决Windows与Mac时间不同步</h1>
     
     
       <p class="meta">
@@ -97,17 +95,26 @@
   
 
 
-<time datetime="2012-02-15T18:37:00+00:00" pubdate data-updated="true">Feb 15<span>th</span>, 2012</time>
+<time datetime="2012-10-10T09:48:00+00:00" pubdate data-updated="true">Oct 10<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>在mac lion下Parallels Desktop 7运行性能比vm快多了，启动xp欢迎界面都没看清楚就进去了，非常强悍。
-之前在pd7下安装了xp，后来不记得弄过什么网络配置，可能删除了无线网络之类的。
-今天进入pd7提示“在 <em>您mac上没有网络适配器为</em> Parallels shard #0虚拟网络。该网络适配器0将被断开。”
-修复方法是在pd7菜单:<strong>偏好设置-高级-网络“更改设置”-恢复默认设置；</strong>然后重启pd7就可以了</p>
+<div class="entry-content"><p>安装Windows 和 Mac 苹果双系统后，系统时间出现不同步。有两种简单的解决办法：</p>
+
+<ul>
+<li>方法一：在Mac下<code>系统编好设置</code> －> <code>时间与日期</code> -> <code>时区</code> 最接近的城市选择为<code>雷克雅未克 - 冰岛</code></li>
+</ul>
+
+
+<p><img src="http://ww3.sinaimg.cn/large/a74ecc4cjw1dxpvrxc7f8j.jpg" alt="Smaller icon" /></p>
+
+<ul>
+<li>方法二：修改windows注册表，在<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\</code>中加一项DWORD，<code>RealTimeIsUniversal</code>，把值设为 <strong>1</strong>。</li>
+</ul>
+
 </div>
 
 
@@ -130,7 +137,7 @@
   
 
 
-<time datetime="2012-02-15T18:37:00+00:00" pubdate data-updated="true">Feb 15<span>th</span>, 2012</time>
+<time datetime="2012-10-10T09:48:00+00:00" pubdate data-updated="true">Oct 10<span>th</span>, 2012</time>
       
 
 <span class="categories">
@@ -144,7 +151,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zhongdechan.github.com/blog/2012/02/15/parallels-shard-number-0-network/" data-via="" data-counturl="http://zhongdechan.github.com/blog/2012/02/15/parallels-shard-number-0-network/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zhongdechan.github.com/blog/2012/10/10/mac-windows-time-tongbu/" data-via="" data-counturl="http://zhongdechan.github.com/blog/2012/10/10/mac-windows-time-tongbu/" >Tweet</a>
   
   
   
@@ -153,10 +160,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/" title="Previous Post: Twitter Bootstrap Modal插件点击背景自动消失">&laquo; Twitter Bootstrap Modal插件点击背景自动消失</a>
+        <a class="basic-alignment left" href="/blog/2012/10/09/octopress-faq-wenti/" title="Previous Post: octopress 常见问题">&laquo; octopress 常见问题</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/03/17/mac-linux-android-adb-vendorid/" title="Next Post: mac linux android adb vendorId">mac linux android adb vendorId &raquo;</a>
       
     </p>
   </footer>
@@ -231,8 +236,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://zhongdechan.github.com/blog/2012/02/15/parallels-shard-number-0-network/';
-        var disqus_url = 'http://zhongdechan.github.com/blog/2012/02/15/parallels-shard-number-0-network/';
+        var disqus_identifier = 'http://zhongdechan.github.com/blog/2012/10/10/mac-windows-time-tongbu/';
+        var disqus_url = 'http://zhongdechan.github.com/blog/2012/10/10/mac-windows-time-tongbu/';
         var disqus_script = 'embed.js';
       
     (function () {
