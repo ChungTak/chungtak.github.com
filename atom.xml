@@ -4,7 +4,7 @@
   <title><![CDATA[大小麦哲伦]]></title>
   <link href="http://zhongdechan.github.com/atom.xml" rel="self"/>
   <link href="http://zhongdechan.github.com/"/>
-  <updated>2012-10-10T10:13:11+00:00</updated>
+  <updated>2012-10-11T10:27:07+00:00</updated>
   <id>http://zhongdechan.github.com/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
@@ -12,6 +12,287 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[hibernate多对多查询]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/11/hibernate-many-to-many-query/"/>
+    <updated>2012-10-11T09:35:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/11/hibernate-many-to-many-query</id>
+    <content type="html"><![CDATA[<p>示例：每篇文章（article）与标签（tag）为多对多关系<br/>
+<img src="http://ww2.sinaimg.cn/large/a74ecc4cjw1dxr0mgy0vdj.jpg" alt="img" /><br/>
+Hibernate 映射:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;hibernate-mapping&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">com.sample.model.Tag&quot;</span> <span class="na">table=</span><span class="s">&quot;tag&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;cache</span> <span class="na">usage=</span><span class="s">&quot;read-write&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">column=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;generator</span> <span class="na">class=</span><span class="s">&quot;native&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/id&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">column=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/class&gt;</span>
+</span><span class='line'><span class="nt">&lt;/hibernate-mapping&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;hibernate-mapping&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">&quot;ca.sergiy.model.Article&quot;</span> <span class="na">table=</span><span class="s">&quot;article&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;cache</span> <span class="na">usage=</span><span class="s">&quot;read-write&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">column=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;generator</span> <span class="na">class=</span><span class="s">&quot;native&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/id&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">column=</span><span class="s">&quot;title&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;set</span> <span class="na">name=</span><span class="s">&quot;tags&quot;</span> <span class="na">table=</span><span class="s">&quot;article_tag&quot;</span> <span class="na">lazy=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;key</span> <span class="na">column=</span><span class="s">&quot;articleid&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;many-to-many</span> <span class="na">class=</span><span class="s">&quot;ca.sergiy.model.Tag&quot;</span> <span class="na">column=</span><span class="s">&quot;tagid&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/set&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/class&gt;</span>
+</span><span class='line'><span class="nt">&lt;/hibernate-mapping&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>1. 根据标签（tag）查询文章（article）</h4>
+
+<p>MYSQL查询语句：查询标签为 &#8220;Java&#8221; 或者 标签为&#8221;Hibernate&#8221; 的文章</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">a</span><span class="p">.</span><span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span>   <span class="o">`</span><span class="n">article</span><span class="o">`</span> <span class="n">a</span>
+</span><span class='line'>       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">article_tag</span> <span class="k">at</span>
+</span><span class='line'>         <span class="k">ON</span> <span class="k">at</span><span class="p">.</span><span class="n">articleid</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span>
+</span><span class='line'>       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">tag</span> <span class="n">t</span>
+</span><span class='line'>         <span class="k">ON</span> <span class="n">t</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="k">at</span><span class="p">.</span><span class="n">tagid</span>
+</span><span class='line'><span class="k">WHERE</span>  <span class="n">t</span><span class="p">.</span><span class="n">name</span> <span class="k">IN</span> <span class="p">(</span><span class="ss">&quot;Java&quot;</span><span class="p">,</span> <span class="ss">&quot;Hibernate&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hibernate HQL:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">String</span><span class="p">[]</span> <span class="n">tags</span> <span class="o">=</span> <span class="err">{</span><span class="ss">&quot;Java&quot;</span><span class="p">,</span> <span class="ss">&quot;Hibernate&quot;</span><span class="err">}</span><span class="p">;</span>
+</span><span class='line'><span class="n">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="ss">&quot;select distinct a from Article a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;join a.tags t &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;where t.name in (:tags)&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="k">session</span><span class="p">.</span><span class="n">createQuery</span><span class="p">(</span><span class="n">hql</span><span class="p">);</span>
+</span><span class='line'><span class="n">query</span><span class="p">.</span><span class="n">setParameterList</span><span class="p">(</span><span class="ss">&quot;tags&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="p">);</span>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Article</span><span class="o">&gt;</span> <span class="n">articles</span> <span class="o">=</span> <span class="n">query</span><span class="p">.</span><span class="n">list</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<h4>2. 查询没有标签的文章</h4>
+
+<p>MySQL 查询语句:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span>   <span class="n">a</span><span class="p">.</span><span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span>     <span class="o">`</span><span class="n">article</span><span class="o">`</span> <span class="n">a</span>
+</span><span class='line'>         <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">article_tag</span> <span class="k">at</span>
+</span><span class='line'>           <span class="k">ON</span> <span class="k">at</span><span class="p">.</span><span class="n">articleid</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span>
+</span><span class='line'><span class="k">GROUP</span> <span class="k">BY</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span>
+</span><span class='line'><span class="k">HAVING</span>   <span class="k">Count</span><span class="p">(</span><span class="k">at</span><span class="p">.</span><span class="n">tagid</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hibernate HQL:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="ss">&quot;select a from Article a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;left join a.tags t &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;group by a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;having count(t)=0&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="k">session</span><span class="p">.</span><span class="n">createQuery</span><span class="p">(</span><span class="n">hql</span><span class="p">);</span>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Article</span><span class="o">&gt;</span> <span class="n">articles</span> <span class="o">=</span> <span class="n">query</span><span class="p">.</span><span class="n">list</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+注意这里使用了<code>LEFT JOIN</code>.</p>
+
+<h4>3. 查询文章至少包含特定标签</h4>
+
+<p>查询至少包含标签是&#8221;Java&#8221; 和标签 &#8220;Hibernate&#8221; 的文章(文章至少含有这2个标签)<br/>
+MySQL 查询语句:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span>   <span class="n">article</span> <span class="n">a</span>
+</span><span class='line'>       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="k">SELECT</span>   <span class="k">at</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                   <span class="k">FROM</span>     <span class="n">article_tag</span> <span class="k">at</span>
+</span><span class='line'>                            <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">article</span> <span class="n">a</span>
+</span><span class='line'>                              <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="k">at</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                            <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">tag</span> <span class="n">t</span>
+</span><span class='line'>                              <span class="k">ON</span> <span class="n">t</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="k">at</span><span class="p">.</span><span class="n">tagid</span>
+</span><span class='line'>                   <span class="k">WHERE</span>    <span class="n">t</span><span class="p">.</span><span class="n">name</span> <span class="k">IN</span> <span class="p">(</span><span class="ss">&quot;Java&quot;</span><span class="p">,</span><span class="ss">&quot;Hibernate&quot;</span><span class="p">)</span>
+</span><span class='line'>                   <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">at</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                   <span class="k">HAVING</span>   <span class="k">Count</span><span class="p">(</span><span class="k">at</span><span class="p">.</span><span class="n">articleid</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="n">aa</span>
+</span><span class='line'>         <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">aa</span><span class="p">.</span><span class="n">articleid</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hibernate HQL:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">String</span><span class="p">[]</span> <span class="n">tags</span> <span class="o">=</span> <span class="err">{</span><span class="ss">&quot;Java&quot;</span><span class="p">,</span> <span class="ss">&quot;Hibernate&quot;</span><span class="err">}</span><span class="p">;</span>
+</span><span class='line'><span class="n">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="ss">&quot;select a from Article a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;join a.tags t &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;where t.name in (:tags) &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;group by a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;having count(t)=:tag_count&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="k">session</span><span class="p">.</span><span class="n">createQuery</span><span class="p">(</span><span class="n">hql</span><span class="p">);</span>
+</span><span class='line'><span class="n">query</span><span class="p">.</span><span class="n">setParameterList</span><span class="p">(</span><span class="ss">&quot;tags&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="p">);</span>
+</span><span class='line'><span class="n">query</span><span class="p">.</span><span class="n">setInteger</span><span class="p">(</span><span class="ss">&quot;tag_count&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="p">.</span><span class="k">length</span><span class="p">);</span>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Article</span><span class="o">&gt;</span> <span class="n">articles</span> <span class="o">=</span> <span class="n">query</span><span class="p">.</span><span class="n">list</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>4. 查询文章指定多个标签</h4>
+
+<p>查询标签是&#8221;Java&#8221; 和标签 &#8220;Hibernate&#8221; 的文章(文章只指派了这2个标签)<br/>
+MySQL 查询语句:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span>   <span class="n">article</span> <span class="n">a</span>
+</span><span class='line'>       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="k">SELECT</span>   <span class="k">at</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                   <span class="k">FROM</span>     <span class="n">article_tag</span> <span class="k">at</span>
+</span><span class='line'>                   <span class="k">WHERE</span>    <span class="k">at</span><span class="p">.</span><span class="n">articleid</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span>   <span class="n">at2</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                                             <span class="k">FROM</span>     <span class="n">article_tag</span> <span class="n">at2</span>
+</span><span class='line'>                                                      <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">article</span> <span class="n">a2</span>
+</span><span class='line'>                                                        <span class="k">ON</span> <span class="n">a2</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">at2</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                                             <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">at2</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                                             <span class="k">HAVING</span>   <span class="k">Count</span><span class="p">(</span><span class="n">at2</span><span class="p">.</span><span class="n">articleid</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>                            <span class="k">AND</span> <span class="k">at</span><span class="p">.</span><span class="n">tagid</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span>
+</span><span class='line'>                                             <span class="k">FROM</span>   <span class="n">tag</span> <span class="n">t</span>
+</span><span class='line'>                                             <span class="k">WHERE</span>  <span class="n">t</span><span class="p">.</span><span class="n">name</span> <span class="k">IN</span> <span class="p">(</span><span class="ss">&quot;Java&quot;</span><span class="p">,</span><span class="ss">&quot;Hibernate&quot;</span><span class="p">))</span>
+</span><span class='line'>                   <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">at</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                   <span class="k">HAVING</span>   <span class="k">Count</span><span class="p">(</span><span class="k">at</span><span class="p">.</span><span class="n">articleid</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="n">aa</span>
+</span><span class='line'>         <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">aa</span><span class="p">.</span><span class="n">articleid</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hibernate HQL:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">String</span><span class="p">[]</span> <span class="n">tags</span> <span class="o">=</span> <span class="err">{</span><span class="ss">&quot;Java&quot;</span><span class="p">,</span> <span class="ss">&quot;Hibernate&quot;</span><span class="err">}</span><span class="p">;</span>
+</span><span class='line'><span class="n">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="ss">&quot;select a from Article a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;join a.tags t &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;where t.name in (:tags) &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;and a.id in (&quot;</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="ss">&quot;select a2.id &quot;</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="ss">&quot;from Article a2 &quot;</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="ss">&quot;join a2.tags t2 &quot;</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="ss">&quot;group by a2 &quot;</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="ss">&quot;having count(t2)=:tag_count) &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;group by a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;having count(t)=:tag_count&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="k">session</span><span class="p">.</span><span class="n">createQuery</span><span class="p">(</span><span class="n">hql</span><span class="p">);</span>
+</span><span class='line'><span class="n">query</span><span class="p">.</span><span class="n">setParameterList</span><span class="p">(</span><span class="ss">&quot;tags&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="p">);</span>
+</span><span class='line'><span class="n">query</span><span class="p">.</span><span class="n">setInteger</span><span class="p">(</span><span class="ss">&quot;tag_count&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="p">.</span><span class="k">length</span><span class="p">);</span>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Article</span><span class="o">&gt;</span> <span class="n">articles</span> <span class="o">=</span> <span class="n">query</span><span class="p">.</span><span class="n">list</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[解决Windows与Mac时间不同步]]></title>

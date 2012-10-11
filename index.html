@@ -9,7 +9,16 @@
   <meta name="author" content="zhongdechan">
 
   
-  <meta name="description" content="安装Windows 和 Mac 苹果双系统后，系统时间出现不同步。有两种简单的解决办法： 方法一：在Mac下系统编好设置 －> 时间与日期 -> 时区 最接近的城市选择为雷克雅未克 - 冰岛 方法二：修改windows注册表，在HKEY_LOCAL_MACHINE\SYSTEM\ &hellip;">
+  <meta name="description" content="示例：每篇文章（article）与标签（tag）为多对多关系 Hibernate 映射: 1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;hibernate-mapping&gt; &lt;class name=com.sample.model.Tag&quot; table=&quot;tag& &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +85,141 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/11/hibernate-many-to-many-query/">Hibernate多对多查询</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-11T09:35:00+00:00" pubdate data-updated="true">Oct 11<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>示例：每篇文章（article）与标签（tag）为多对多关系<br/>
+<img src="http://ww2.sinaimg.cn/large/a74ecc4cjw1dxr0mgy0vdj.jpg" alt="img" /><br/>
+Hibernate 映射:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;hibernate-mapping&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">com.sample.model.Tag&quot;</span> <span class="na">table=</span><span class="s">&quot;tag&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;cache</span> <span class="na">usage=</span><span class="s">&quot;read-write&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">column=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;generator</span> <span class="na">class=</span><span class="s">&quot;native&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/id&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">column=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/class&gt;</span>
+</span><span class='line'><span class="nt">&lt;/hibernate-mapping&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;hibernate-mapping&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">&quot;ca.sergiy.model.Article&quot;</span> <span class="na">table=</span><span class="s">&quot;article&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;cache</span> <span class="na">usage=</span><span class="s">&quot;read-write&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">column=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;generator</span> <span class="na">class=</span><span class="s">&quot;native&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/id&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">column=</span><span class="s">&quot;title&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;set</span> <span class="na">name=</span><span class="s">&quot;tags&quot;</span> <span class="na">table=</span><span class="s">&quot;article_tag&quot;</span> <span class="na">lazy=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;key</span> <span class="na">column=</span><span class="s">&quot;articleid&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;many-to-many</span> <span class="na">class=</span><span class="s">&quot;ca.sergiy.model.Tag&quot;</span> <span class="na">column=</span><span class="s">&quot;tagid&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/set&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/class&gt;</span>
+</span><span class='line'><span class="nt">&lt;/hibernate-mapping&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>1. 根据标签（tag）查询文章（article）</h4>
+
+<p>MYSQL查询语句：查询标签为 &#8220;Java&#8221; 或者 标签为&#8221;Hibernate&#8221; 的文章</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">a</span><span class="p">.</span><span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span>   <span class="o">`</span><span class="n">article</span><span class="o">`</span> <span class="n">a</span>
+</span><span class='line'>       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">article_tag</span> <span class="k">at</span>
+</span><span class='line'>         <span class="k">ON</span> <span class="k">at</span><span class="p">.</span><span class="n">articleid</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span>
+</span><span class='line'>       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">tag</span> <span class="n">t</span>
+</span><span class='line'>         <span class="k">ON</span> <span class="n">t</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="k">at</span><span class="p">.</span><span class="n">tagid</span>
+</span><span class='line'><span class="k">WHERE</span>  <span class="n">t</span><span class="p">.</span><span class="n">name</span> <span class="k">IN</span> <span class="p">(</span><span class="ss">&quot;Java&quot;</span><span class="p">,</span> <span class="ss">&quot;Hibernate&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hibernate HQL:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">String</span><span class="p">[]</span> <span class="n">tags</span> <span class="o">=</span> <span class="err">{</span><span class="ss">&quot;Java&quot;</span><span class="p">,</span> <span class="ss">&quot;Hibernate&quot;</span><span class="err">}</span><span class="p">;</span>
+</span><span class='line'><span class="n">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="ss">&quot;select distinct a from Article a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;join a.tags t &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="ss">&quot;where t.name in (:tags)&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="k">session</span><span class="p">.</span><span class="n">createQuery</span><span class="p">(</span><span class="n">hql</span><span class="p">);</span>
+</span><span class='line'><span class="n">query</span><span class="p">.</span><span class="n">setParameterList</span><span class="p">(</span><span class="ss">&quot;tags&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="p">);</span>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Article</span><span class="o">&gt;</span> <span class="n">articles</span> <span class="o">=</span> <span class="n">query</span><span class="p">.</span><span class="n">list</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/11/hibernate-many-to-many-query/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -600,45 +744,6 @@ grails1.x Controller的action写法必须为</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/07/mac-connect-samba-fail/">Mac 连接不了samba</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-07T12:13:00+00:00" pubdate data-updated="true">May 7<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Mac连接samba或者windows共享，一般方法直接在Finder &#8211;前往&#8211;连接服务器。中输入”smb://ServerIpAddress“ &nbsp;就可以了。
-今天连接一个新建的samba服务器，怎么连接也提示密码错误！
-原来是由于Samba 配置文件里面的 “netbios name” 名称太长，引起的。
-详细参考<a href="http://blog.sonitech.org/2011/05/04/%E8%A7%A3%E5%86%B3-mac-%E8%BF%9E%E6%8E%A5-samba3-%E7%9A%84%E9%97%AE%E9%A2%98/">连接</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -652,6 +757,10 @@ grails1.x Controller的action写法必须为</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/10/11/hibernate-many-to-many-query/">hibernate多对多查询</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/10/10/mac-windows-time-tongbu/">解决Windows与Mac时间不同步</a>
@@ -669,10 +778,6 @@ grails1.x Controller的action写法必须为</p>
         <a href="/blog/2012/03/17/mac-linux-android-adb-vendorid/">mac linux android adb vendorId</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/02/15/parallels-shard-number-0-network/">Parallels shard #0 network</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -682,11 +787,11 @@ grails1.x Controller的action写法必须为</p>
 
 <section>
   <h1>标签云</h1>
-    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 120.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 140.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 140.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 140.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 120.0%'>JAVA(1)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(3)</a> <a href='/blog/categories/titanium' style='font-size: 120.0%'>Titanium(1)</a> <a href='/blog/categories/web' style='font-size: 120.0%'>Web(1)</a> <a href='/blog/categories/webservice' style='font-size: 120.0%'>WebService(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 120.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 140.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 140.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 140.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 140.0%'>JAVA(2)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(3)</a> <a href='/blog/categories/titanium' style='font-size: 120.0%'>Titanium(1)</a> <a href='/blog/categories/web' style='font-size: 120.0%'>Web(1)</a> <a href='/blog/categories/webservice' style='font-size: 120.0%'>WebService(1)</a> </span>
 </section>
 <section>
   <h1>博客分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (1)</a></li><li><a href='/blog/categories/mac'>Mac (3)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/web'>Web (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (2)</a></li><li><a href='/blog/categories/mac'>Mac (3)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/web'>Web (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
 </section>
 
   

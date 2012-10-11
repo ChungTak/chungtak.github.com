@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JAVA | 大小麦哲伦]]></title>
   <link href="http://zhongdechan.github.com/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://zhongdechan.github.com/"/>
-  <updated>2012-10-10T10:13:11+00:00</updated>
+  <updated>2012-10-11T10:27:07+00:00</updated>
   <id>http://zhongdechan.github.com/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
@@ -12,6 +12,202 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[hibernate多对多查询]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/11/hibernate-many-to-many-query/"/>
+    <updated>2012-10-11T09:35:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/11/hibernate-many-to-many-query</id>
+    <content type="html"><![CDATA[<p>示例：每篇文章（article）与标签（tag）为多对多关系<br/>
+<img src="http://ww2.sinaimg.cn/large/a74ecc4cjw1dxr0mgy0vdj.jpg" alt="img" /><br/>
+Hibernate 映射:</p>
+
+<p>``` xml
+<hibernate-mapping></p>
+
+<pre><code>&lt;class name=com.sample.model.Tag" table="tag"&gt;
+    &lt;cache usage="read-write"/&gt;
+    &lt;id name="id" column="id" type="long"&gt;
+        &lt;generator class="native"/&gt;
+    &lt;/id&gt;
+    &lt;property name="name" column="name"/&gt;
+&lt;/class&gt;
+</code></pre>
+
+<p></hibernate-mapping>
+```</p>
+
+<p>``` xml
+<hibernate-mapping></p>
+
+<pre><code>&lt;class name="ca.sergiy.model.Article" table="article"&gt;
+    &lt;cache usage="read-write" /&gt;
+    &lt;id name="id" column="id" type="long"&gt;
+        &lt;generator class="native" /&gt;
+    &lt;/id&gt;
+    &lt;property name="title" column="title" /&gt;
+    &lt;set name="tags" table="article_tag" lazy="false"&gt;
+        &lt;key column="articleid" /&gt;
+        &lt;many-to-many class="ca.sergiy.model.Tag" column="tagid" /&gt;
+    &lt;/set&gt;
+&lt;/class&gt;
+</code></pre>
+
+<p></hibernate-mapping>
+```</p>
+
+<h4>1. 根据标签（tag）查询文章（article）</h4>
+
+<p>MYSQL查询语句：查询标签为 "Java" 或者 标签为"Hibernate" 的文章</p>
+
+<p><code>`` sql
+SELECT DISTINCT a.*
+FROM  </code>article` a</p>
+
+<pre><code>   INNER JOIN article_tag at
+     ON at.articleid = a.id
+   INNER JOIN tag t
+     ON t.id = at.tagid
+</code></pre>
+
+<p>WHERE  t.name IN ("Java", "Hibernate")
+```</p>
+
+<p>Hibernate HQL:<br/>
+``` sql
+String[] tags = {"Java", "Hibernate"};
+String hql = "select distinct a from Article a " +</p>
+
+<pre><code>            "join a.tags t " +
+            "where t.name in (:tags)";
+</code></pre>
+
+<p>Query query = session.createQuery(hql);
+query.setParameterList("tags", tags);
+List<Article> articles = query.list();
+```</p>
+
+<!--more-->
+
+
+<h4>2. 查询没有标签的文章</h4>
+
+<p>MySQL 查询语句:<br/>
+<code>`` sql
+SELECT   a.*
+FROM    </code>article` a</p>
+
+<pre><code>     LEFT JOIN article_tag at
+       ON at.articleid = a.id
+</code></pre>
+
+<p>GROUP BY a.id
+HAVING   Count(at.tagid) = 0
+```</p>
+
+<p>Hibernate HQL:  <br/>
+``` sql
+String hql = "select a from Article a " +</p>
+
+<pre><code>            "left join a.tags t " +
+            "group by a " +
+            "having count(t)=0";
+</code></pre>
+
+<p>Query query = session.createQuery(hql);
+List<Article> articles = query.list();
+<code>``  
+注意这里使用了</code>LEFT JOIN`.</p>
+
+<h4>3. 查询文章至少包含特定标签</h4>
+
+<p>查询至少包含标签是"Java" 和标签 "Hibernate" 的文章(文章至少含有这2个标签)<br/>
+MySQL 查询语句:<br/>
+``` sql
+SELECT a.*
+FROM   article a</p>
+
+<pre><code>   INNER JOIN (SELECT   at.articleid
+               FROM     article_tag at
+                        INNER JOIN article a
+                          ON a.id = at.articleid
+                        INNER JOIN tag t
+                          ON t.id = at.tagid
+               WHERE    t.name IN ("Java","Hibernate")
+               GROUP BY at.articleid
+               HAVING   Count(at.articleid) = 2) aa
+     ON a.id = aa.articleid
+</code></pre>
+
+<p>```</p>
+
+<p>Hibernate HQL:  <br/>
+``` sql
+String[] tags = {"Java", "Hibernate"};
+String hql = "select a from Article a " +</p>
+
+<pre><code>            "join a.tags t " +
+            "where t.name in (:tags) " +
+            "group by a " +
+            "having count(t)=:tag_count";
+</code></pre>
+
+<p>Query query = session.createQuery(hql);
+query.setParameterList("tags", tags);
+query.setInteger("tag_count", tags.length);
+List<Article> articles = query.list();
+```</p>
+
+<h4>4. 查询文章指定多个标签</h4>
+
+<p>查询标签是"Java" 和标签 "Hibernate" 的文章(文章只指派了这2个标签)<br/>
+MySQL 查询语句:<br/>
+``` sql
+SELECT a.*
+FROM   article a</p>
+
+<pre><code>   INNER JOIN (SELECT   at.articleid
+               FROM     article_tag at
+               WHERE    at.articleid IN (SELECT   at2.articleid
+                                         FROM     article_tag at2
+                                                  INNER JOIN article a2
+                                                    ON a2.id = at2.articleid
+                                         GROUP BY at2.articleid
+                                         HAVING   Count(at2.articleid) = 2)
+                        AND at.tagid IN (SELECT id
+                                         FROM   tag t
+                                         WHERE  t.name IN ("Java","Hibernate"))
+               GROUP BY at.articleid
+               HAVING   Count(at.articleid) = 2) aa
+     ON a.id = aa.articleid
+</code></pre>
+
+<p>```</p>
+
+<p>Hibernate HQL:  <br/>
+``` sql
+String[] tags = {"Java", "Hibernate"};
+String hql = "select a from Article a " +</p>
+
+<pre><code>            "join a.tags t " +
+            "where t.name in (:tags) " +
+            "and a.id in (" +
+                "select a2.id " +
+                "from Article a2 " +
+                "join a2.tags t2 " +
+                "group by a2 " +
+                "having count(t2)=:tag_count) " +
+            "group by a " +
+            "having count(t)=:tag_count";
+</code></pre>
+
+<p>Query query = session.createQuery(hql);
+query.setParameterList("tags", tags);
+query.setInteger("tag_count", tags.length);
+List<Article> articles = query.list();
+```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Java  webservice  jax-rs 中文乱码]]></title>

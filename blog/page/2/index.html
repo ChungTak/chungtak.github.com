@@ -9,9 +9,9 @@
   <meta name="author" content="zhongdechan">
 
   
-  <meta name="description" content="今天遇到个奇怪问题，系统用webservice 接收请求，然后调用电信的宽乐网关接口发送短信。
-系统编码已经统一为UTF-8，服务器为Ubuntu。系统日志编码正常，但手机接收到的中文短信为乱码。
-JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding= &hellip;">
+  <meta name="description" content="Mac连接samba或者windows共享，一般方法直接在Finder &#8211;前往&#8211;连接服务器。中输入”smb://ServerIpAddress“ &nbsp;就可以了。
+今天连接一个新建的samba服务器，怎么连接也提示密码错误！
+原来是由于Samba 配置文件里面的 “ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,45 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding= &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/07/mac-connect-samba-fail/">Mac 连接不了samba</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-07T12:13:00+00:00" pubdate data-updated="true">May 7<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Mac连接samba或者windows共享，一般方法直接在Finder &#8211;前往&#8211;连接服务器。中输入”smb://ServerIpAddress“ &nbsp;就可以了。
+今天连接一个新建的samba服务器，怎么连接也提示密码错误！
+原来是由于Samba 配置文件里面的 “netbios name” 名称太长，引起的。
+详细参考<a href="http://blog.sonitech.org/2011/05/04/%E8%A7%A3%E5%86%B3-mac-%E8%BF%9E%E6%8E%A5-samba3-%E7%9A%84%E9%97%AE%E9%A2%98/">连接</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -203,6 +242,10 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/11/hibernate-many-to-many-query/">hibernate多对多查询</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/10/mac-windows-time-tongbu/">解决Windows与Mac时间不同步</a>
       </li>
     
@@ -218,10 +261,6 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
         <a href="/blog/2012/03/17/mac-linux-android-adb-vendorid/">mac linux android adb vendorId</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/02/15/parallels-shard-number-0-network/">Parallels shard #0 network</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -231,11 +270,11 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
 
 <section>
   <h1>标签云</h1>
-    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 120.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 140.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 140.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 140.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 120.0%'>JAVA(1)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(3)</a> <a href='/blog/categories/titanium' style='font-size: 120.0%'>Titanium(1)</a> <a href='/blog/categories/web' style='font-size: 120.0%'>Web(1)</a> <a href='/blog/categories/webservice' style='font-size: 120.0%'>WebService(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 120.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 140.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 140.0%'>Grails(2)</a> <a href='/blog/categories/groovy' style='font-size: 140.0%'>Groovy(2)</a> <a href='/blog/categories/java' style='font-size: 140.0%'>JAVA(2)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(3)</a> <a href='/blog/categories/titanium' style='font-size: 120.0%'>Titanium(1)</a> <a href='/blog/categories/web' style='font-size: 120.0%'>Web(1)</a> <a href='/blog/categories/webservice' style='font-size: 120.0%'>WebService(1)</a> </span>
 </section>
 <section>
   <h1>博客分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (1)</a></li><li><a href='/blog/categories/mac'>Mac (3)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/web'>Web (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/groovy'>Groovy (2)</a></li><li><a href='/blog/categories/java'>JAVA (2)</a></li><li><a href='/blog/categories/mac'>Mac (3)</a></li><li><a href='/blog/categories/titanium'>Titanium (1)</a></li><li><a href='/blog/categories/web'>Web (1)</a></li><li><a href='/blog/categories/webservice'>WebService (1)</a></li></ul>
 </section>
 
   
