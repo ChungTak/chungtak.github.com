@@ -3,9 +3,7 @@ layout: post
 title: "Grails2 upgrade exception"
 date: 2011-08-15 12:15
 comments: true
-categories:
- - Grails
- - Groovy
+categories: Grails
 ---
 Grails1.x升级到Grails2.x又遇到一个异常
 ```

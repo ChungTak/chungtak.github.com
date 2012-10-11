@@ -3,7 +3,7 @@ layout: post
 title: "Dell Vostro v131 mac lion 完美安装"
 date: 2012-03-21 20:29
 comments: true
-categories: 
+categories: Mac 
 ---
 
 安装黑苹果真的很折腾，近来同事在v131上完美安装了lion，足足花了一天，不断的重启不断滴尝试。建议想用苹果的还是直接买白苹果省心。

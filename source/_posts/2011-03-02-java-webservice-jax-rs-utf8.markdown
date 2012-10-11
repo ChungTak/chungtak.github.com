@@ -5,7 +5,6 @@ date: 2011-03-02 12:08
 comments: true
 categories:
  - JAVA
- - WebService
 ---
 
 今天遇到个奇怪问题，系统用webservice 接收请求，然后调用电信的宽乐网关接口发送短信。

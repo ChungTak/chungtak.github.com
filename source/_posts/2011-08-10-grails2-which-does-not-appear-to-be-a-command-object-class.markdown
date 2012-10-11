@@ -3,9 +3,7 @@ layout: post
 title: "Grails2升级异常which does not appear to be a command object class."
 date: 2011-08-10 12:15
 comments: true
-categories:
- - Grails
- - Groovy
+categories: Grails
 ---
 今天把老项目Grails1.1升级到Grails2.01，出现奇怪的错误
 ```
