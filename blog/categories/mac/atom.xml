@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | 大小麦哲伦]]></title>
   <link href="http://zhongdechan.github.com/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://zhongdechan.github.com/"/>
-  <updated>2012-10-11T10:27:07+00:00</updated>
+  <updated>2012-10-11T10:43:21+00:00</updated>
   <id>http://zhongdechan.github.com/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
@@ -31,6 +31,126 @@
 <li>方法二：修改windows注册表，在<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\</code>中加一项DWORD，<code>RealTimeIsUniversal</code>，把值设为 <strong>1</strong>。</li>
 </ul>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dell Vostro v131 mac lion 完美安装]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/03/21/dell-vostro-v131-mac-lion/"/>
+    <updated>2012-03-21T20:29:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/03/21/dell-vostro-v131-mac-lion</id>
+    <content type="html"><![CDATA[<p>安装黑苹果真的很折腾，近来同事在v131上完美安装了lion，足足花了一天，不断的重启不断滴尝试。建议想用苹果的还是直接买白苹果省心。</p>
+
+<h3>安装情况</h3>
+
+<p>CPU:Core i3 （完美）
+主板: Intel HM 55 （完美）
+显卡:HD Graphics 3000  （QE/CI完美）
+声卡  （完美无爆音）
+集成 摄像头/Mic  （完美）
+2x USB 3.0 （完美）
+1 USB 2.0  （完美）
+触摸板：（两点触摸 完美）
+SD Card reader(完美)
+蓝牙(无驱动)
+WiFi(无驱动) 这款卡太老，没驱动的，建议买个usb网卡替代。<a href="http://www.360buy.com/product/389343.html">EDUP EP-N8513 隐藏型无线网卡</a></p>
+
+<!--more-->
+
+
+<h3>安装注意事项</h3>
+
+<p>安装基础教程这里就不说了，pcbeta上有写得非常好的 。<a href="http://bbs.pcbeta.com/viewthread-920341-1-1.html">lion图文详细安装教程</a></p>
+
+<p>这里指出这款机器安装的特别要注意的地方(10.8支持很好，不需以下步骤)
+1.  保证所有硬盘卷轴不能有中文，不然会导致安装界面鼠标键盘不能用
+2.  如果安装界面usb鼠标键盘仍然不能用，把/System/Library/Extensions/AppleIntel<strong> 、 Ati<em> 、Geforce</em></strong> 和 NV** 驱动都删掉
+3.  安装的时候usb要用左边的usb2.0接口，右面的usb3.0接口要进入系统后安装相应驱动才能使用
+4.  使用-f -v -x进入</p>
+
+<p><em>经同事的不懈努力测试，按上面方法，系统绝对能正常安装。</em></p>
+
+<p>安装好后第一件事就是把AppleIntel驱动放到/System/Library/Extensions，<strong>但严重注意这些驱动不是安装盘的AppleIntel</strong>
+去pcbeta上搜索一下lion的原版驱动，必须包含AppleIntelHD3000Graphics**开头的驱动（安装盘上没这些，正常不删文件安装是有这些驱动的）</p>
+
+<h3>必备软件</h3>
+
+<ol>
+<li><a href="http://support.apple.com/kb/DL1484">10.7.3 Combo Update</a>   (升级包)</li>
+<li><a href="http://www.tonymacx86.com/C:Dq-OCPpT/MultiBeast-4.3.1.zip">MultiBeast-4.3.1 for lion</a>           （驱动包）</li>
+<li>Kext Utility          (驱动权限重建MultiBeast自带)</li>
+<li>SleepEnabler.kext     解决睡眠问题</li>
+<li>VoodooBattery.kext    电池显示</li>
+</ol>
+
+
+<h3>驱动安装</h3>
+
+<ul>
+<li>先安装<em>10.7.3 Combo Update</em> ，安装完后<strong>不要重启!!</strong></li>
+<li>运行MultiBeast,选择下面提到的驱动
+<code>tex
+System Utilities
+Drivers &amp; Bootloaders -&gt; Kexts &amp; Enablers -&gt; Miscellaneous -&gt; ElliottForceLegacyRTC
+Drivers &amp; Bootloaders -&gt; Kexts &amp; Enablers -&gt; Miscellaneous -&gt; EvOreboot
+Drivers &amp; Bootloaders -&gt; Kexts &amp; Enablers -&gt; Miscellaneous -&gt; FakeSMC
+Drivers &amp; Bootloaders -&gt; Kexts &amp; Enablers -&gt; Miscellaneous -&gt; IOUSBFamily Rollback
+Drivers &amp; Bootloaders -&gt; Kexts &amp; Enablers -&gt; Miscellaneous -&gt; NullCPUPowerManagement
+Drivers &amp; Bootloaders -&gt; Kexts &amp; Enablers -&gt; Miscellaneous -&gt; USB 3.0
+Drivers &amp; Bootloaders -&gt; Kexts &amp; Enablers -&gt; Miscellaneous -&gt; PS/2 Keyboard/Mice...
+Drivers &amp; Bootloaders -&gt; Kexts &amp; Enablers -&gt; Network - &gt; Lnx2Mac's Realtek...
+Customization -&gt; System Definitions -&gt; MacBook Pro - &gt; MacBook Pro 8,1
+OSx86 Software -&gt; 全选
+</code></li>
+<li><p>点击下一步、继续继续。安装完后，<strong>不要重启</strong>。</p></li>
+<li><p>在运行一次MultiBeast，只选择声卡驱动
+<code>tex
+Drivers &amp; Bootloaders -&gt; Kexts &amp; Enablers -&gt; Audio -&gt; Universal -&gt; VoodooHDA .2.7.3
+</code>
+删除自带的AppleHDA</p></li>
+</ul>
+
+
+<p><code>bash
+rm -r AppleHDA.kext   (在/System/Library/Extensions)
+</code></p>
+
+<ul>
+<li><p>安装睡眠和电池驱动
+SleepEnabler.kext和VoodooBattery.kext</p></li>
+<li><p>使用Kext Utility重建缓存</p></li>
+<li>重启，使用-f参数</li>
+</ul>
+
+
+<p>按上面的步骤重启后，系统声卡、显卡、网卡、usb3.0都能驱动的了。</p>
+
+<p>现在右侧的USB3.0接口可以完美使用了，但是左侧的USB2.0却不能使用。
+要驱动左侧的USB2.0和SD读卡器，需要删除AppleHPET.kext（<strong>要备份</strong>，这个在我机器上有效，其他机器不一定）</p>
+
+<h3>显示器亮度</h3>
+
+<p>安装好的系统不能调节亮度，需要在dsdt上添加几行代码
+推荐使用dsdt editor 导出dsdt，该软件能自动fix错误和编译。
+在dsdt中搜索PWRB ，添加以下这个Device (PNLF)方法，原来的内容不要删</p>
+
+<p>```
+Device (PWRB)
+{</p>
+
+<pre><code>     Device (PNLF)
+     {
+              Name (_HID, EisaId ("APP0002"))
+              Name (_CID, "backlight")
+              Name (_UID, 0x0A)
+              Name (_STA, 0x0B)
+     }
+</code></pre>
+
+<p>}
+```
+编译后把dsdt.aml放到/Extra下，重启就可以在显示器里调节亮度了,不过每次重启后又要重新调节。
+不要用ACPIBacklight.kext，用了反而调节不了。不知道为何·~求解~~</p>
 ]]></content>
   </entry>
   
