@@ -52,7 +52,7 @@ WHERE  t.name IN ("Java", "Hibernate")
 ```
 
 Hibernate HQL:  
-``` sql
+``` java
 String[] tags = {"Java", "Hibernate"};
 String hql = "select distinct a from Article a " +
                 "join a.tags t " +
@@ -75,7 +75,7 @@ HAVING   Count(at.tagid) = 0
 ```
 
 Hibernate HQL:    
-``` sql
+``` java
 String hql = "select a from Article a " +
                 "left join a.tags t " +
                 "group by a " +
@@ -104,7 +104,7 @@ FROM   article a
 ```
 
 Hibernate HQL:    
-``` sql
+``` java
 String[] tags = {"Java", "Hibernate"};
 String hql = "select a from Article a " +
                 "join a.tags t " +
@@ -140,7 +140,7 @@ FROM   article a
 ```
 
 Hibernate HQL:    
-``` sql
+``` java
 String[] tags = {"Java", "Hibernate"};
 String hql = "select a from Article a " +
                 "join a.tags t " +
