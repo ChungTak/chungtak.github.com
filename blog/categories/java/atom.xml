@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JAVA | 大小麦哲伦]]></title>
   <link href="http://zhongdechan.github.com/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://zhongdechan.github.com/"/>
-  <updated>2012-10-11T10:43:21+00:00</updated>
+  <updated>2012-10-11T10:50:10+00:00</updated>
   <id>http://zhongdechan.github.com/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
@@ -25,7 +25,7 @@ Hibernate 映射:</p>
 <p>``` xml
 <hibernate-mapping></p>
 
-<pre><code>&lt;class name=com.sample.model.Tag" table="tag"&gt;
+<pre><code>&lt;class name="com.sample.model.Tag" table="tag"&gt;
     &lt;cache usage="read-write"/&gt;
     &lt;id name="id" column="id" type="long"&gt;
         &lt;generator class="native"/&gt;
@@ -40,7 +40,7 @@ Hibernate 映射:</p>
 <p>``` xml
 <hibernate-mapping></p>
 
-<pre><code>&lt;class name="ca.sergiy.model.Article" table="article"&gt;
+<pre><code>&lt;class name="com.sample.model.Article" table="article"&gt;
     &lt;cache usage="read-write" /&gt;
     &lt;id name="id" column="id" type="long"&gt;
         &lt;generator class="native" /&gt;
@@ -48,7 +48,7 @@ Hibernate 映射:</p>
     &lt;property name="title" column="title" /&gt;
     &lt;set name="tags" table="article_tag" lazy="false"&gt;
         &lt;key column="articleid" /&gt;
-        &lt;many-to-many class="ca.sergiy.model.Tag" column="tagid" /&gt;
+        &lt;many-to-many class="com.sample.model.Tag" column="tagid" /&gt;
     &lt;/set&gt;
 &lt;/class&gt;
 </code></pre>

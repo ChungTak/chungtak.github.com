@@ -4,7 +4,7 @@
   <title><![CDATA[大小麦哲伦]]></title>
   <link href="http://zhongdechan.github.com/atom.xml" rel="self"/>
   <link href="http://zhongdechan.github.com/"/>
-  <updated>2012-10-11T10:43:21+00:00</updated>
+  <updated>2012-10-11T10:50:10+00:00</updated>
   <id>http://zhongdechan.github.com/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
@@ -32,7 +32,7 @@ Hibernate 映射:</p>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;hibernate-mapping&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">com.sample.model.Tag&quot;</span> <span class="na">table=</span><span class="s">&quot;tag&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">&quot;com.sample.model.Tag&quot;</span> <span class="na">table=</span><span class="s">&quot;tag&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>        <span class="nt">&lt;cache</span> <span class="na">usage=</span><span class="s">&quot;read-write&quot;</span><span class="nt">/&gt;</span>
 </span><span class='line'>        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">column=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>            <span class="nt">&lt;generator</span> <span class="na">class=</span><span class="s">&quot;native&quot;</span><span class="nt">/&gt;</span>
@@ -59,7 +59,7 @@ Hibernate 映射:</p>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 </pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;hibernate-mapping&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">&quot;ca.sergiy.model.Article&quot;</span> <span class="na">table=</span><span class="s">&quot;article&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">&quot;com.sample.model.Article&quot;</span> <span class="na">table=</span><span class="s">&quot;article&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>        <span class="nt">&lt;cache</span> <span class="na">usage=</span><span class="s">&quot;read-write&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">column=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>            <span class="nt">&lt;generator</span> <span class="na">class=</span><span class="s">&quot;native&quot;</span> <span class="nt">/&gt;</span>
@@ -67,7 +67,7 @@ Hibernate 映射:</p>
 </span><span class='line'>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">column=</span><span class="s">&quot;title&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>        <span class="nt">&lt;set</span> <span class="na">name=</span><span class="s">&quot;tags&quot;</span> <span class="na">table=</span><span class="s">&quot;article_tag&quot;</span> <span class="na">lazy=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>            <span class="nt">&lt;key</span> <span class="na">column=</span><span class="s">&quot;articleid&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;many-to-many</span> <span class="na">class=</span><span class="s">&quot;ca.sergiy.model.Tag&quot;</span> <span class="na">column=</span><span class="s">&quot;tagid&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;many-to-many</span> <span class="na">class=</span><span class="s">&quot;com.sample.model.Tag&quot;</span> <span class="na">column=</span><span class="s">&quot;tagid&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>        <span class="nt">&lt;/set&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;/class&gt;</span>
 </span><span class='line'><span class="nt">&lt;/hibernate-mapping&gt;</span>
