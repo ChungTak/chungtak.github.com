@@ -12,7 +12,7 @@ Hibernate 映射:
  
 ``` xml
 <hibernate-mapping>
-    <class name=com.sample.model.Tag" table="tag">
+    <class name="com.sample.model.Tag" table="tag">
         <cache usage="read-write"/>
         <id name="id" column="id" type="long">
             <generator class="native"/>
@@ -24,7 +24,7 @@ Hibernate 映射:
 
 ``` xml
 <hibernate-mapping>
-    <class name="ca.sergiy.model.Article" table="article">
+    <class name="com.sample.model.Article" table="article">
         <cache usage="read-write" />
         <id name="id" column="id" type="long">
             <generator class="native" />
@@ -32,7 +32,7 @@ Hibernate 映射:
         <property name="title" column="title" />
         <set name="tags" table="article_tag" lazy="false">
             <key column="articleid" />
-            <many-to-many class="ca.sergiy.model.Tag" column="tagid" />
+            <many-to-many class="com.sample.model.Tag" column="tagid" />
         </set>
     </class>
 </hibernate-mapping>
