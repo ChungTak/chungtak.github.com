@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JAVA | 大小麦哲伦]]></title>
   <link href="http://zhongdechan.github.com/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://zhongdechan.github.com/"/>
-  <updated>2012-10-11T10:50:10+00:00</updated>
+  <updated>2012-10-11T10:59:18+00:00</updated>
   <id>http://zhongdechan.github.com/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
@@ -74,7 +74,7 @@ FROM  </code>article` a</p>
 ```</p>
 
 <p>Hibernate HQL:<br/>
-``` sql
+``` java
 String[] tags = {"Java", "Hibernate"};
 String hql = "select distinct a from Article a " +</p>
 
@@ -106,7 +106,7 @@ HAVING   Count(at.tagid) = 0
 ```</p>
 
 <p>Hibernate HQL:  <br/>
-``` sql
+``` java
 String hql = "select a from Article a " +</p>
 
 <pre><code>            "left join a.tags t " +
@@ -142,7 +142,7 @@ FROM   article a</p>
 <p>```</p>
 
 <p>Hibernate HQL:  <br/>
-``` sql
+``` java
 String[] tags = {"Java", "Hibernate"};
 String hql = "select a from Article a " +</p>
 
@@ -185,7 +185,7 @@ FROM   article a</p>
 <p>```</p>
 
 <p>Hibernate HQL:  <br/>
-``` sql
+``` java
 String[] tags = {"Java", "Hibernate"};
 String hql = "select a from Article a " +</p>
 

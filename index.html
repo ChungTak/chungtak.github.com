@@ -200,13 +200,13 @@ Hibernate 映射:</p>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="n">String</span><span class="p">[]</span> <span class="n">tags</span> <span class="o">=</span> <span class="err">{</span><span class="ss">&quot;Java&quot;</span><span class="p">,</span> <span class="ss">&quot;Hibernate&quot;</span><span class="err">}</span><span class="p">;</span>
-</span><span class='line'><span class="n">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="ss">&quot;select distinct a from Article a &quot;</span> <span class="o">+</span>
-</span><span class='line'>                <span class="ss">&quot;join a.tags t &quot;</span> <span class="o">+</span>
-</span><span class='line'>                <span class="ss">&quot;where t.name in (:tags)&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="k">session</span><span class="p">.</span><span class="n">createQuery</span><span class="p">(</span><span class="n">hql</span><span class="p">);</span>
-</span><span class='line'><span class="n">query</span><span class="p">.</span><span class="n">setParameterList</span><span class="p">(</span><span class="ss">&quot;tags&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="p">);</span>
-</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Article</span><span class="o">&gt;</span> <span class="n">articles</span> <span class="o">=</span> <span class="n">query</span><span class="p">.</span><span class="n">list</span><span class="p">();</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span><span class="o">[]</span> <span class="n">tags</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;Java&quot;</span><span class="o">,</span> <span class="s">&quot;Hibernate&quot;</span><span class="o">};</span>
+</span><span class='line'><span class="n">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="s">&quot;select distinct a from Article a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;join a.tags t &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;where t.name in (:tags)&quot;</span><span class="o">;</span>
+</span><span class='line'><span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">hql</span><span class="o">);</span>
+</span><span class='line'><span class="n">query</span><span class="o">.</span><span class="na">setParameterList</span><span class="o">(</span><span class="s">&quot;tags&quot;</span><span class="o">,</span> <span class="n">tags</span><span class="o">);</span>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Article</span><span class="o">&gt;</span> <span class="n">articles</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="na">list</span><span class="o">();</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
