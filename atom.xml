@@ -4,7 +4,7 @@
   <title><![CDATA[大小麦哲伦]]></title>
   <link href="http://zhongdechan.github.com/atom.xml" rel="self"/>
   <link href="http://zhongdechan.github.com/"/>
-  <updated>2012-10-11T10:59:18+00:00</updated>
+  <updated>2012-10-12T09:47:10+00:00</updated>
   <id>http://zhongdechan.github.com/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
@@ -12,6 +12,79 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Chrome下showModalDialog dialogWidth长度属性无效]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/12/showmodaldialog-chrome/"/>
+    <updated>2012-10-12T09:29:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/12/showmodaldialog-chrome</id>
+    <content type="html"><![CDATA[<p>在Chrome浏览器下调用window.showModalDialog 会忽略dialogWidth和dialogHeight属性,其他浏览器IE,firefox却显示正常。<br/>
+原因是Chrome下dialogWidth和dialogHeight的值<strong>不能带&#8221;px&#8221;后缀</strong>.正确写法<code>"dialogWidth:100;dialogHeight:200"</code>  <br/>
+但其他浏览器则相反需要带有&#8221;px&#8221;后缀,例如:<code>"dialogWidth:100px;dialogHeight:200px"</code></p>
+
+<p>要兼容所有浏览器需要判断浏览器类型，参考代码：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">ModalDialog</span><span class="p">(</span><span class="nx">sURL</span><span class="p">,</span> <span class="nx">vArguments</span><span class="p">,</span> <span class="nx">ModalDialogHeight</span><span class="p">,</span> <span class="nx">ModalDialogWidth</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">sFeatures</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">showModalDialog</span><span class="p">)</span> <span class="p">{</span><span class="c1">//判断浏览器是否支持showModalDialog函数</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">match</span><span class="p">(</span><span class="s1">&#39;chrome&#39;</span><span class="p">))</span> <span class="p">{</span><span class="c1">//非chrome浏览器添加px</span>
+</span><span class='line'>                <span class="nx">ModalDialogWidth</span> <span class="o">+=</span> <span class="s2">&quot;px&quot;</span><span class="p">;</span>
+</span><span class='line'>                <span class="nx">ModalDialogHeight</span> <span class="o">+=</span> <span class="s2">&quot;px&quot;</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="nx">sFeatures</span> <span class="o">=</span> <span class="s2">&quot;status:no;center:yes;dialogWidth:&quot;</span> <span class="o">+</span> <span class="nx">ModalDialogWidth</span> <span class="o">+</span> <span class="s2">&quot;;dialogHeight:&quot;</span> <span class="o">+</span> <span class="nx">ModalDialogHeight</span> <span class="o">+</span> <span class="s2">&quot;;resizable:yes;&quot;</span><span class="p">;</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">returnResult</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">showModalDialog</span><span class="p">(</span><span class="nx">sURL</span><span class="p">,</span> <span class="nx">vArguments</span><span class="p">,</span> <span class="nx">sFeatures</span><span class="p">);</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="nx">returnResult</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="nx">returnResult</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">else</span> <span class="p">{</span><span class="c1">//使用window.open替代showModalDialog</span>
+</span><span class='line'>            <span class="nx">sFeatures</span> <span class="o">=</span> <span class="s2">&quot;status=no,width=&quot;</span> <span class="o">+</span> <span class="nx">ModalDialogWidth</span> <span class="o">+</span> <span class="s2">&quot;,height=&quot;</span> <span class="o">+</span> <span class="nx">ModalDialogHeight</span> <span class="o">+</span> <span class="s2">&quot;,menubar=no,scrollbars=no&quot;</span><span class="p">;</span>
+</span><span class='line'>            <span class="nb">window</span><span class="p">.</span><span class="nx">margs</span> <span class="o">=</span> <span class="nx">vArguments</span><span class="p">;</span>
+</span><span class='line'>            <span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">sURL</span><span class="p">,</span> <span class="s2">&quot;_blank&quot;</span><span class="p">,</span> <span class="nx">sFeatures</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ubuntu tomcat 目录]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir/"/>
+    <updated>2012-10-12T09:13:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir</id>
+    <content type="html"><![CDATA[<p>在ubuntu系统上使用apt-get安装tomcat的目录结构：</p>
+
+<ul>
+<li><p>/etc/tomcat7 - 全局配置</p></li>
+<li><p>/usr/share/tomcat7/ - 程序主目录</p></li>
+<li><p>/usr/share/tomcat7/conf/Catalina/localhost/ - 本机部署的 Catalina 配置</p></li>
+<li><p>/var/lib/tomcat7/ - 工作主目录</p></li>
+<li><p>/var/lib/tomcat7/webapps - （应用文件war包放在这里）</p></li>
+<li><p>/var/lib/tomcat7/work</p></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[hibernate多对多查询]]></title>

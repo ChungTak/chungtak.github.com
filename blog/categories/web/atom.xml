@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web | 大小麦哲伦]]></title>
   <link href="http://zhongdechan.github.com/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://zhongdechan.github.com/"/>
-  <updated>2012-10-11T10:59:18+00:00</updated>
+  <updated>2012-10-12T09:47:10+00:00</updated>
   <id>http://zhongdechan.github.com/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
@@ -80,6 +80,18 @@ rake aborted
 </code></p>
 
 <p>原因是url写错，正确格式为<code>git@github.com:your_username/your_username.github.com</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Can't locate Android SDK in Titanium Studio]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/"/>
+    <updated>2011-09-11T14:28:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio</id>
+    <content type="html"><![CDATA[<p>在Titanium Studio中设置了Android sdk路径，但是运行的时候提示"Can't locate Android SDK"
+原因是Titanium sdk 对 Android sdk版本有要求:
++ <strong>Titaniun sdk 1.7 要求至少要Android sdk 2.1</strong>
++ <strong>Titaniun sdk 1.8 要求至少要Android sdk 2.2</strong></p>
 ]]></content>
   </entry>
   

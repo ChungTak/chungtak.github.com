@@ -26,7 +26,7 @@
         <loc>
             http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/
         </loc>
-        <lastmod>2012-10-08T22:50:09+00:00</lastmod>
+        <lastmod>2012-10-12T09:47:04+00:00</lastmod>
     </url>
     <url>
         <loc>
@@ -59,11 +59,19 @@
         <lastmod>2012-10-11T10:58:27+00:00</lastmod>
     </url>
     <url>
+        <loc>http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir/</loc>
+        <lastmod>2012-10-12T09:20:47+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://zhongdechan.github.com/blog/2012/10/12/showmodaldialog-chrome/</loc>
+        <lastmod>2012-10-12T09:42:05+00:00</lastmod>
+    </url>
+    <url>
         <loc>http://zhongdechan.github.com/blog/archives/</loc>
-        <lastmod>2012-10-11T10:58:27+00:00</lastmod>
+        <lastmod>2012-10-12T09:47:04+00:00</lastmod>
     </url>
     <url>
         <loc>http://zhongdechan.github.com/</loc>
-        <lastmod>2012-10-11T10:58:27+00:00</lastmod>
+        <lastmod>2012-10-12T09:47:04+00:00</lastmod>
     </url>
 </urlset>

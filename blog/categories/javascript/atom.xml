@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Javascript | 大小麦哲伦]]></title>
+  <link href="http://zhongdechan.github.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.com/"/>
+  <updated>2012-10-12T09:47:10+00:00</updated>
+  <id>http://zhongdechan.github.com/</id>
+  <author>
+    <name><![CDATA[zhongdechan]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Chrome下showModalDialog dialogWidth长度属性无效]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/12/showmodaldialog-chrome/"/>
+    <updated>2012-10-12T09:29:00+00:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/12/showmodaldialog-chrome</id>
+    <content type="html"><![CDATA[<p>在Chrome浏览器下调用window.showModalDialog 会忽略dialogWidth和dialogHeight属性,其他浏览器IE,firefox却显示正常。<br/>
+原因是Chrome下dialogWidth和dialogHeight的值<strong>不能带"px"后缀</strong>.正确写法<code>"dialogWidth:100;dialogHeight:200"</code>  <br/>
+但其他浏览器则相反需要带有"px"后缀,例如:<code>"dialogWidth:100px;dialogHeight:200px"</code></p>
+
+<p>要兼容所有浏览器需要判断浏览器类型，参考代码：<br/>
+``` javascript<br/>
+function ModalDialog(sURL, vArguments, ModalDialogHeight, ModalDialogWidth) {</p>
+
+<pre><code>    var sFeatures;
+    if (window.showModalDialog) {//判断浏览器是否支持showModalDialog函数
+        if (!navigator.userAgent.toLowerCase().match('chrome')) {//非chrome浏览器添加px
+            ModalDialogWidth += "px";
+            ModalDialogHeight += "px";
+        }
+        sFeatures = "status:no;center:yes;dialogWidth:" + ModalDialogWidth + ";dialogHeight:" + ModalDialogHeight + ";resizable:yes;";
+        var returnResult = window.showModalDialog(sURL, vArguments, sFeatures);
+        if (returnResult) {
+            return returnResult;
+        }
+    }
+    else {//使用window.open替代showModalDialog
+        sFeatures = "status=no,width=" + ModalDialogWidth + ",height=" + ModalDialogHeight + ",menubar=no,scrollbars=no";
+        window.margs = vArguments;
+        window.open(sURL, "_blank", sFeatures);
+    }
+}
+</code></pre>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+</feed>

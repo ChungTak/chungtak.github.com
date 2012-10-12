@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Grails2升级异常which does not appear to be a command object class. - 大小麦哲伦</title>
+  <title>Category: Linux - 大小麦哲伦</title>
   <meta name="author" content="zhongdechan">
 
   
-  <meta name="description" content="今天把老项目Grails1.1升级到Grails2.01，出现奇怪的错误 1
-2
-3 XXXController.groovy: The [someAction] action accepts a parameter of type [EventTypeEnum] which does not &hellip;">
+  <meta name="description" content="Category: Linux">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/">
+  <link rel="canonical" href="http://zhongdechan.github.comblog/categories/linux/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -77,124 +75,36 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">Grails2升级异常which Does Not Appear to Be a Command Object Class.</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-10T12:15:00+00:00" pubdate data-updated="true">Aug 10<span>th</span>, 2011</time>
-        
-      </p>
+    <h1 class="entry-title">Category: Linux</h1>
     
   </header>
-
-
-<div class="entry-content"><p>今天把老项目Grails1.1升级到Grails2.01，出现奇怪的错误</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> XXXController.groovy: The [someAction] action accepts a parameter of type [EventTypeEnum]
-</span><span class='line'> which does not appear to be a command object class. This can happen if the source code for this  class is not in
-</span><span class='line'> this project and the class is not marked with @Validateable.</span></code></pre></td></tr></table></div></figure>
-
-
-<p>查了一下文档，原来grails2.x把Controller里面的所有public方法都会发布为action。
-grails1.x Controller的action写法必须为</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def exportExcelSingle = {
-</span><span class='line'>    ...
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>而grails2.x公共方法也会发布为actiong，上面写法等同于</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>public void exportExcelSingle = {
-</span><span class='line'>    ...
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>修复方法很简单，把public或者def开头的这些私有方法，声明为 <strong>private</strong> 就ok</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">zhongdechan</span></span>
-
-      
-
-
-
-
-
+  <div id="blog-archives" class="category">
 
 
 
   
+  <h2>2012</h2>
+
+<article>
+  
+<h1><a href="/blog/2012/10/12/ubuntu-tomcat-dir/">ubuntu tomcat 目录</a></h1>
+<time datetime="2012-10-12T09:13:00+00:00" pubdate><span class='month'>Oct</span> <span class='day'>12</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/linux/'>Linux</a></span>
+</footer>
 
 
-<time datetime="2011-08-10T12:15:00+00:00" pubdate data-updated="true">Aug 10<span>th</span>, 2011</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/grails/'>Grails</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/" data-via="" data-counturl="http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2011/05/07/mac-connect-samba-fail/" title="Previous Post: Mac 连接不了samba">&laquo; Mac 连接不了samba</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2011/08/15/grails2-upgrade-exception/" title="Next Post: Grails2 upgrade exception">Grails2 upgrade exception &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-  </section>
+
+  
+</article>
 
 </div>
 
@@ -258,10 +168,7 @@ grails1.x Controller的action写法必须为</p>
       var disqus_shortname = 'zhongdechansblog';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/';
-        var disqus_url = 'http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

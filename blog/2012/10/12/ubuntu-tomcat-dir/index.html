@@ -5,13 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Grails2升级异常which does not appear to be a command object class. - 大小麦哲伦</title>
+  <title>ubuntu tomcat 目录 - 大小麦哲伦</title>
   <meta name="author" content="zhongdechan">
 
   
-  <meta name="description" content="今天把老项目Grails1.1升级到Grails2.01，出现奇怪的错误 1
-2
-3 XXXController.groovy: The [someAction] action accepts a parameter of type [EventTypeEnum] which does not &hellip;">
+  <meta name="description" content="在ubuntu系统上使用apt-get安装tomcat的目录结构： /etc/tomcat7 - 全局配置
+/usr/share/tomcat7/ - 程序主目录
+/usr/share/tomcat7/conf/Catalina/localhost/ - 本机部署的 Catalina 配置
+/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/">
+  <link rel="canonical" href="http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -81,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">Grails2升级异常which Does Not Appear to Be a Command Object Class.</h1>
+      <h1 class="entry-title">Ubuntu Tomcat 目录</h1>
     
     
       <p class="meta">
@@ -97,45 +98,24 @@
   
 
 
-<time datetime="2011-08-10T12:15:00+00:00" pubdate data-updated="true">Aug 10<span>th</span>, 2011</time>
+<time datetime="2012-10-12T09:13:00+00:00" pubdate data-updated="true">Oct 12<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>今天把老项目Grails1.1升级到Grails2.01，出现奇怪的错误</p>
+<div class="entry-content"><p>在ubuntu系统上使用apt-get安装tomcat的目录结构：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> XXXController.groovy: The [someAction] action accepts a parameter of type [EventTypeEnum]
-</span><span class='line'> which does not appear to be a command object class. This can happen if the source code for this  class is not in
-</span><span class='line'> this project and the class is not marked with @Validateable.</span></code></pre></td></tr></table></div></figure>
+<ul>
+<li><p>/etc/tomcat7 - 全局配置</p></li>
+<li><p>/usr/share/tomcat7/ - 程序主目录</p></li>
+<li><p>/usr/share/tomcat7/conf/Catalina/localhost/ - 本机部署的 Catalina 配置</p></li>
+<li><p>/var/lib/tomcat7/ - 工作主目录</p></li>
+<li><p>/var/lib/tomcat7/webapps - （应用文件war包放在这里）</p></li>
+<li><p>/var/lib/tomcat7/work</p></li>
+</ul>
 
-
-<p>查了一下文档，原来grails2.x把Controller里面的所有public方法都会发布为action。
-grails1.x Controller的action写法必须为</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def exportExcelSingle = {
-</span><span class='line'>    ...
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>而grails2.x公共方法也会发布为actiong，上面写法等同于</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>public void exportExcelSingle = {
-</span><span class='line'>    ...
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>修复方法很简单，把public或者def开头的这些私有方法，声明为 <strong>private</strong> 就ok</p>
 </div>
 
 
@@ -158,12 +138,12 @@ grails1.x Controller的action写法必须为</p>
   
 
 
-<time datetime="2011-08-10T12:15:00+00:00" pubdate data-updated="true">Aug 10<span>th</span>, 2011</time>
+<time datetime="2012-10-12T09:13:00+00:00" pubdate data-updated="true">Oct 12<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/grails/'>Grails</a>
+    <a class='category' href='/blog/categories/linux/'>Linux</a>
   
 </span>
 
@@ -172,7 +152,7 @@ grails1.x Controller的action写法必须为</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/" data-via="" data-counturl="http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir/" data-via="" data-counturl="http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir/" >Tweet</a>
   
   
   
@@ -181,10 +161,10 @@ grails1.x Controller的action写法必须为</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/05/07/mac-connect-samba-fail/" title="Previous Post: Mac 连接不了samba">&laquo; Mac 连接不了samba</a>
+        <a class="basic-alignment left" href="/blog/2012/10/11/hibernate-many-to-many-query/" title="Previous Post: hibernate多对多查询">&laquo; hibernate多对多查询</a>
       
       
-        <a class="basic-alignment right" href="/blog/2011/08/15/grails2-upgrade-exception/" title="Next Post: Grails2 upgrade exception">Grails2 upgrade exception &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2012/10/12/showmodaldialog-chrome/" title="Next Post: Chrome下showModalDialog dialogWidth长度属性无效">Chrome下showModalDialog dialogWidth长度属性无效 &raquo;</a>
       
     </p>
   </footer>
@@ -259,8 +239,8 @@ grails1.x Controller的action写法必须为</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/';
-        var disqus_url = 'http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/';
+        var disqus_identifier = 'http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir/';
+        var disqus_url = 'http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir/';
         var disqus_script = 'embed.js';
       
     (function () {
