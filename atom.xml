@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[大小麦哲伦]]></title>
+  <link href="http://zhongdechan.github.com/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.com/"/>
+  <updated>2014-04-25T23:11:02+08:00</updated>
+  <id>http://zhongdechan.github.com/</id>
+  <author>
+    <name><![CDATA[zhongdechan]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[浏览器后退js不执行]]></title>
+    <link href="http://zhongdechan.github.com/blog/2014/04/25/history-back-javascript-not-run/"/>
+    <updated>2014-04-25T22:41:34+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2014/04/25/history-back-javascript-not-run</id>
+    <content type="html"><![CDATA[<p>当点击后退按钮返回之前访问过的页面时,该网页上的脚本将无法再运行。</p>
+
+<p>解决办法 设置一个空的window.onunload函数</p>
+
+<p>e.g.</p>
+
+<figure class='code'><figcaption><span>Javascript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;&lt;body&gt;</span>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;页面加载运行.&#39;</span><span class="p">);</span> <span class="p">};</span>
+</span><span class='line'>  <span class="nb">window</span><span class="p">.</span><span class="nx">onunload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){};</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Chrome下showModalDialog dialogWidth长度属性无效]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/12/showmodaldialog-chrome/"/>
+    <updated>2012-10-12T09:29:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/12/showmodaldialog-chrome</id>
+    <content type="html"><![CDATA[<p>在Chrome浏览器下调用window.showModalDialog 会忽略dialogWidth和dialogHeight属性,其他浏览器IE,firefox却显示正常。<br/>
+原因是Chrome下dialogWidth和dialogHeight的值<strong>不能带&#8221;px&#8221;后缀</strong>.正确写法<code>"dialogWidth:100;dialogHeight:200"</code>  <br/>
+但其他浏览器则相反需要带有&#8221;px&#8221;后缀,例如:<code>"dialogWidth:100px;dialogHeight:200px"</code></p>
+
+<p>要兼容所有浏览器需要判断浏览器类型，参考代码：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">ModalDialog</span><span class="p">(</span><span class="nx">sURL</span><span class="p">,</span> <span class="nx">vArguments</span><span class="p">,</span> <span class="nx">ModalDialogHeight</span><span class="p">,</span> <span class="nx">ModalDialogWidth</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">sFeatures</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">showModalDialog</span><span class="p">)</span> <span class="p">{</span><span class="c1">//判断浏览器是否支持showModalDialog函数</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">match</span><span class="p">(</span><span class="s1">&#39;chrome&#39;</span><span class="p">))</span> <span class="p">{</span><span class="c1">//非chrome浏览器添加px</span>
+</span><span class='line'>                <span class="nx">ModalDialogWidth</span> <span class="o">+=</span> <span class="s2">&quot;px&quot;</span><span class="p">;</span>
+</span><span class='line'>                <span class="nx">ModalDialogHeight</span> <span class="o">+=</span> <span class="s2">&quot;px&quot;</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="nx">sFeatures</span> <span class="o">=</span> <span class="s2">&quot;status:no;center:yes;dialogWidth:&quot;</span> <span class="o">+</span> <span class="nx">ModalDialogWidth</span> <span class="o">+</span> <span class="s2">&quot;;dialogHeight:&quot;</span> <span class="o">+</span> <span class="nx">ModalDialogHeight</span> <span class="o">+</span> <span class="s2">&quot;;resizable:yes;&quot;</span><span class="p">;</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">returnResult</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">showModalDialog</span><span class="p">(</span><span class="nx">sURL</span><span class="p">,</span> <span class="nx">vArguments</span><span class="p">,</span> <span class="nx">sFeatures</span><span class="p">);</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="nx">returnResult</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="nx">returnResult</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">else</span> <span class="p">{</span><span class="c1">//使用window.open替代showModalDialog</span>
+</span><span class='line'>            <span class="nx">sFeatures</span> <span class="o">=</span> <span class="s2">&quot;status=no,width=&quot;</span> <span class="o">+</span> <span class="nx">ModalDialogWidth</span> <span class="o">+</span> <span class="s2">&quot;,height=&quot;</span> <span class="o">+</span> <span class="nx">ModalDialogHeight</span> <span class="o">+</span> <span class="s2">&quot;,menubar=no,scrollbars=no&quot;</span><span class="p">;</span>
+</span><span class='line'>            <span class="nb">window</span><span class="p">.</span><span class="nx">margs</span> <span class="o">=</span> <span class="nx">vArguments</span><span class="p">;</span>
+</span><span class='line'>            <span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">sURL</span><span class="p">,</span> <span class="s2">&quot;_blank&quot;</span><span class="p">,</span> <span class="nx">sFeatures</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu Tomcat 目录]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir/"/>
+    <updated>2012-10-12T09:13:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir</id>
+    <content type="html"><![CDATA[<p>在ubuntu系统上使用apt-get安装tomcat的目录结构：</p>
+
+<ul>
+<li><p>/etc/tomcat7 &ndash; 全局配置</p></li>
+<li><p>/usr/share/tomcat7/ &ndash; 程序主目录</p></li>
+<li><p>/usr/share/tomcat7/conf/Catalina/localhost/ &ndash; 本机部署的 Catalina 配置</p></li>
+<li><p>/var/lib/tomcat7/ &ndash; 工作主目录</p></li>
+<li><p>/var/lib/tomcat7/webapps &ndash; （应用文件war包放在这里）</p></li>
+<li><p>/var/lib/tomcat7/work</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hibernate多对多查询]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/11/hibernate-many-to-many-query/"/>
+    <updated>2012-10-11T09:35:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/11/hibernate-many-to-many-query</id>
+    <content type="html"><![CDATA[<p>示例：每篇文章（article）与标签（tag）为多对多关系<br/>
+<img src="http://ww2.sinaimg.cn/large/a74ecc4cjw1dxr0mgy0vdj.jpg" alt="img" /><br/>
+Hibernate 映射:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;hibernate-mapping&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">&quot;com.sample.model.Tag&quot;</span> <span class="na">table=</span><span class="s">&quot;tag&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;cache</span> <span class="na">usage=</span><span class="s">&quot;read-write&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">column=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;generator</span> <span class="na">class=</span><span class="s">&quot;native&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/id&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">column=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/class&gt;</span>
+</span><span class='line'><span class="nt">&lt;/hibernate-mapping&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;hibernate-mapping&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;class</span> <span class="na">name=</span><span class="s">&quot;com.sample.model.Article&quot;</span> <span class="na">table=</span><span class="s">&quot;article&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;cache</span> <span class="na">usage=</span><span class="s">&quot;read-write&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;id</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">column=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;generator</span> <span class="na">class=</span><span class="s">&quot;native&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/id&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">column=</span><span class="s">&quot;title&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;set</span> <span class="na">name=</span><span class="s">&quot;tags&quot;</span> <span class="na">table=</span><span class="s">&quot;article_tag&quot;</span> <span class="na">lazy=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;key</span> <span class="na">column=</span><span class="s">&quot;articleid&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;many-to-many</span> <span class="na">class=</span><span class="s">&quot;com.sample.model.Tag&quot;</span> <span class="na">column=</span><span class="s">&quot;tagid&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/set&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/class&gt;</span>
+</span><span class='line'><span class="nt">&lt;/hibernate-mapping&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>1. 根据标签（tag）查询文章（article）</h4>
+
+<p>MYSQL查询语句：查询标签为 &ldquo;Java&rdquo; 或者 标签为&#8221;Hibernate&#8221; 的文章</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">a</span><span class="p">.</span><span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span>   <span class="o">`</span><span class="n">article</span><span class="o">`</span> <span class="n">a</span>
+</span><span class='line'>       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">article_tag</span> <span class="k">at</span>
+</span><span class='line'>         <span class="k">ON</span> <span class="k">at</span><span class="p">.</span><span class="n">articleid</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span>
+</span><span class='line'>       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">tag</span> <span class="n">t</span>
+</span><span class='line'>         <span class="k">ON</span> <span class="n">t</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="k">at</span><span class="p">.</span><span class="n">tagid</span>
+</span><span class='line'><span class="k">WHERE</span>  <span class="n">t</span><span class="p">.</span><span class="n">name</span> <span class="k">IN</span> <span class="p">(</span><span class="ss">&quot;Java&quot;</span><span class="p">,</span> <span class="ss">&quot;Hibernate&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hibernate HQL:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span><span class="o">[]</span> <span class="n">tags</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;Java&quot;</span><span class="o">,</span> <span class="s">&quot;Hibernate&quot;</span><span class="o">};</span>
+</span><span class='line'><span class="n">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="s">&quot;select distinct a from Article a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;join a.tags t &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;where t.name in (:tags)&quot;</span><span class="o">;</span>
+</span><span class='line'><span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">hql</span><span class="o">);</span>
+</span><span class='line'><span class="n">query</span><span class="o">.</span><span class="na">setParameterList</span><span class="o">(</span><span class="s">&quot;tags&quot;</span><span class="o">,</span> <span class="n">tags</span><span class="o">);</span>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Article</span><span class="o">&gt;</span> <span class="n">articles</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="na">list</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
+
+
+<h4>2. 查询没有标签的文章</h4>
+
+<p>MySQL 查询语句:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span>   <span class="n">a</span><span class="p">.</span><span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span>     <span class="o">`</span><span class="n">article</span><span class="o">`</span> <span class="n">a</span>
+</span><span class='line'>         <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">article_tag</span> <span class="k">at</span>
+</span><span class='line'>           <span class="k">ON</span> <span class="k">at</span><span class="p">.</span><span class="n">articleid</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span>
+</span><span class='line'><span class="k">GROUP</span> <span class="k">BY</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span>
+</span><span class='line'><span class="k">HAVING</span>   <span class="k">Count</span><span class="p">(</span><span class="k">at</span><span class="p">.</span><span class="n">tagid</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hibernate HQL:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="s">&quot;select a from Article a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;left join a.tags t &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;group by a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;having count(t)=0&quot;</span><span class="o">;</span>
+</span><span class='line'><span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">hql</span><span class="o">);</span>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Article</span><span class="o">&gt;</span> <span class="n">articles</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="na">list</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+注意这里使用了<code>LEFT JOIN</code>.</p>
+
+<h4>3. 查询文章至少包含特定标签</h4>
+
+<p>查询至少包含标签是&#8221;Java&#8221; 和标签 &ldquo;Hibernate&rdquo; 的文章(文章至少含有这2个标签)<br/>
+MySQL 查询语句:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span>   <span class="n">article</span> <span class="n">a</span>
+</span><span class='line'>       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="k">SELECT</span>   <span class="k">at</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                   <span class="k">FROM</span>     <span class="n">article_tag</span> <span class="k">at</span>
+</span><span class='line'>                            <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">article</span> <span class="n">a</span>
+</span><span class='line'>                              <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="k">at</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                            <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">tag</span> <span class="n">t</span>
+</span><span class='line'>                              <span class="k">ON</span> <span class="n">t</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="k">at</span><span class="p">.</span><span class="n">tagid</span>
+</span><span class='line'>                   <span class="k">WHERE</span>    <span class="n">t</span><span class="p">.</span><span class="n">name</span> <span class="k">IN</span> <span class="p">(</span><span class="ss">&quot;Java&quot;</span><span class="p">,</span><span class="ss">&quot;Hibernate&quot;</span><span class="p">)</span>
+</span><span class='line'>                   <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">at</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                   <span class="k">HAVING</span>   <span class="k">Count</span><span class="p">(</span><span class="k">at</span><span class="p">.</span><span class="n">articleid</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="n">aa</span>
+</span><span class='line'>         <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">aa</span><span class="p">.</span><span class="n">articleid</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hibernate HQL:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span><span class="o">[]</span> <span class="n">tags</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;Java&quot;</span><span class="o">,</span> <span class="s">&quot;Hibernate&quot;</span><span class="o">};</span>
+</span><span class='line'><span class="n">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="s">&quot;select a from Article a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;join a.tags t &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;where t.name in (:tags) &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;group by a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;having count(t)=:tag_count&quot;</span><span class="o">;</span>
+</span><span class='line'><span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">hql</span><span class="o">);</span>
+</span><span class='line'><span class="n">query</span><span class="o">.</span><span class="na">setParameterList</span><span class="o">(</span><span class="s">&quot;tags&quot;</span><span class="o">,</span> <span class="n">tags</span><span class="o">);</span>
+</span><span class='line'><span class="n">query</span><span class="o">.</span><span class="na">setInteger</span><span class="o">(</span><span class="s">&quot;tag_count&quot;</span><span class="o">,</span> <span class="n">tags</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Article</span><span class="o">&gt;</span> <span class="n">articles</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="na">list</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>4. 查询文章指定多个标签</h4>
+
+<p>查询标签是&#8221;Java&#8221; 和标签 &ldquo;Hibernate&rdquo; 的文章(文章只指派了这2个标签)<br/>
+MySQL 查询语句:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="o">*</span>
+</span><span class='line'><span class="k">FROM</span>   <span class="n">article</span> <span class="n">a</span>
+</span><span class='line'>       <span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="k">SELECT</span>   <span class="k">at</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                   <span class="k">FROM</span>     <span class="n">article_tag</span> <span class="k">at</span>
+</span><span class='line'>                   <span class="k">WHERE</span>    <span class="k">at</span><span class="p">.</span><span class="n">articleid</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span>   <span class="n">at2</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                                             <span class="k">FROM</span>     <span class="n">article_tag</span> <span class="n">at2</span>
+</span><span class='line'>                                                      <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">article</span> <span class="n">a2</span>
+</span><span class='line'>                                                        <span class="k">ON</span> <span class="n">a2</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">at2</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                                             <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">at2</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                                             <span class="k">HAVING</span>   <span class="k">Count</span><span class="p">(</span><span class="n">at2</span><span class="p">.</span><span class="n">articleid</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>                            <span class="k">AND</span> <span class="k">at</span><span class="p">.</span><span class="n">tagid</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span>
+</span><span class='line'>                                             <span class="k">FROM</span>   <span class="n">tag</span> <span class="n">t</span>
+</span><span class='line'>                                             <span class="k">WHERE</span>  <span class="n">t</span><span class="p">.</span><span class="n">name</span> <span class="k">IN</span> <span class="p">(</span><span class="ss">&quot;Java&quot;</span><span class="p">,</span><span class="ss">&quot;Hibernate&quot;</span><span class="p">))</span>
+</span><span class='line'>                   <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">at</span><span class="p">.</span><span class="n">articleid</span>
+</span><span class='line'>                   <span class="k">HAVING</span>   <span class="k">Count</span><span class="p">(</span><span class="k">at</span><span class="p">.</span><span class="n">articleid</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="n">aa</span>
+</span><span class='line'>         <span class="k">ON</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">aa</span><span class="p">.</span><span class="n">articleid</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hibernate HQL:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span><span class="o">[]</span> <span class="n">tags</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;Java&quot;</span><span class="o">,</span> <span class="s">&quot;Hibernate&quot;</span><span class="o">};</span>
+</span><span class='line'><span class="n">String</span> <span class="n">hql</span> <span class="o">=</span> <span class="s">&quot;select a from Article a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;join a.tags t &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;where t.name in (:tags) &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;and a.id in (&quot;</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="s">&quot;select a2.id &quot;</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="s">&quot;from Article a2 &quot;</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="s">&quot;join a2.tags t2 &quot;</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="s">&quot;group by a2 &quot;</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="s">&quot;having count(t2)=:tag_count) &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;group by a &quot;</span> <span class="o">+</span>
+</span><span class='line'>                <span class="s">&quot;having count(t)=:tag_count&quot;</span><span class="o">;</span>
+</span><span class='line'><span class="n">Query</span> <span class="n">query</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">hql</span><span class="o">);</span>
+</span><span class='line'><span class="n">query</span><span class="o">.</span><span class="na">setParameterList</span><span class="o">(</span><span class="s">&quot;tags&quot;</span><span class="o">,</span> <span class="n">tags</span><span class="o">);</span>
+</span><span class='line'><span class="n">query</span><span class="o">.</span><span class="na">setInteger</span><span class="o">(</span><span class="s">&quot;tag_count&quot;</span><span class="o">,</span> <span class="n">tags</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+</span><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">Article</span><span class="o">&gt;</span> <span class="n">articles</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="na">list</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[解决Windows与Mac时间不同步]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/10/mac-windows-time-tongbu/"/>
+    <updated>2012-10-10T09:48:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/10/mac-windows-time-tongbu</id>
+    <content type="html"><![CDATA[<p>安装Windows 和 Mac 苹果双系统后，系统时间出现不同步。有两种简单的解决办法：</p>
+
+<ul>
+<li>方法一：在Mac下<code>系统编好设置</code> －> <code>时间与日期</code> &ndash;> <code>时区</code> 最接近的城市选择为<code>雷克雅未克 - 冰岛</code></li>
+</ul>
+
+
+<p><img src="http://ww3.sinaimg.cn/large/a74ecc4cjw1dxpvrxc7f8j.jpg" alt="Smaller icon" /></p>
+
+<ul>
+<li>方法二：修改windows注册表，在<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\</code>中加一项DWORD，<code>RealTimeIsUniversal</code>，把值设为 <strong>1</strong>。</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress 常见问题]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti/"/>
+    <updated>2012-10-09T14:12:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti</id>
+    <content type="html"><![CDATA[<ul>
+<li><strong>Mountain Lion 编译报错extconf.rb:21:in `<main>&lsquo;: Only Darwin systems</strong></li>
+</ul>
+
+
+<p>Mountain Lion执行bundle install的时候，会给出下面的报错:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>creating Makefile
+</span><span class='line'>extconf.rb:21:in `&lt;main&gt;&#39;: Only Darwin systems
+</span><span class='line'>greater than 8 (Mac OS X 10.5+) are supported (RuntimeError)
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个报错的原因是octopress需要的<code>rb-fsevent</code>的版本是<code>0.4.3.1</code>，这个版本还不支持<code>Mountain Lion</code>。
+简单的处理办法是修改~/.rvm/gems/ruby-1.9.3-p194/gems/rb-fsevent-0.4.3.1/ext/extconf.rb文件，找到19行，如下:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">sdk_version</span> <span class="o">=</span> <span class="o">{</span> <span class="nv">9</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.5&#39;</span>, <span class="nv">10</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.6&#39;</span>, <span class="nv">11</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.7&#39;</span> <span class="o">}[</span>darwin_version<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改为</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">sdk_version</span> <span class="o">=</span> <span class="o">{</span> <span class="nv">9</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.5&#39;</span>, <span class="nv">10</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.6&#39;</span>, <span class="nv">11</span> <span class="o">=</span>&gt; <span class="s1">&#39;10.7&#39;</span>,12<span class="o">=</span>&gt;<span class="s1">&#39;10.8&#39;</span> <span class="o">}[</span>darwin_version<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>删除第24行内容，如下</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>-isysroot <span class="c">#{xcode_path}/SDKs/MacOSX#{sdk_version}.sdk</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后执行<code>bundle update</code>编译安装即可。</p>
+
+<!--more-->
+
+
+<ul>
+<li><strong>rake deploy不能发布，但是预览正常。检查github上source分支代码已更新，但master仍为老代码。</strong></li>
+</ul>
+
+
+<p>rake操作应该在source分支下进行，若是刚从github里clone下来的，请先执行<code>$ git checkout source</code></p>
+
+<p>发现是因为代码是新从github下clone下来的，未进行初始化deploy.需要执行<code>$ rake setup_github_pages</code>进行初始化。</p>
+
+<ul>
+<li><strong>fatal: &lsquo;octopress&rsquo; does not appear to be a git repository</strong></li>
+</ul>
+
+
+<p>命令行执行：<code>$ git remote add octopress https://github.com/imathis/octopress.git</code></p>
+
+<ul>
+<li><strong>undefined method `[]\&lsquo; for nil:NilClass</strong></li>
+</ul>
+
+
+<p>执行<code>$ rake setup_github_pages</code>初始化出现以下异常</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>rake aborted
+</span><span class='line'>!undefined method `[]&#39; for nil:NilClass
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>原因是url写错，正确格式为<code>git@github.com:your_username/your_username.github.com</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dell Vostro V131 Mac Lion 完美安装]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/03/21/dell-vostro-v131-mac-lion/"/>
+    <updated>2012-03-21T20:29:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/03/21/dell-vostro-v131-mac-lion</id>
+    <content type="html"><![CDATA[<p>安装黑苹果真的很折腾，近来同事在v131上完美安装了lion，足足花了一天，不断的重启不断滴尝试。建议想用苹果的还是直接买白苹果省心。</p>
+
+<h3>安装情况</h3>
+
+<p>CPU:Core i3 （完美）
+主板: Intel HM 55 （完美）
+显卡:HD Graphics 3000  （QE/CI完美）
+声卡  （完美无爆音）
+集成 摄像头/Mic  （完美）
+2x USB 3.0 （完美）
+1 USB 2.0  （完美）
+触摸板：（两点触摸 完美）
+SD Card reader(完美)
+蓝牙(无驱动)
+WiFi(无驱动) 这款卡太老，没驱动的，建议买个usb网卡替代。<a href="http://www.360buy.com/product/389343.html">EDUP EP-N8513 隐藏型无线网卡</a></p>
+
+<!--more-->
+
+
+<h3>安装注意事项</h3>
+
+<p>安装基础教程这里就不说了，pcbeta上有写得非常好的 。<a href="http://bbs.pcbeta.com/viewthread-920341-1-1.html">lion图文详细安装教程</a></p>
+
+<p>这里指出这款机器安装的特别要注意的地方(10.8支持很好，不需以下步骤)
+1.  保证所有硬盘卷轴不能有中文，不然会导致安装界面鼠标键盘不能用
+2.  如果安装界面usb鼠标键盘仍然不能用，把/System/Library/Extensions/AppleIntel<strong> 、 Ati<em> 、Geforce</em></strong> 和 NV** 驱动都删掉
+3.  安装的时候usb要用左边的usb2.0接口，右面的usb3.0接口要进入系统后安装相应驱动才能使用
+4.  使用-f -v -x进入</p>
+
+<p><em>经同事的不懈努力测试，按上面方法，系统绝对能正常安装。</em></p>
+
+<p>安装好后第一件事就是把AppleIntel驱动放到/System/Library/Extensions，<strong>但严重注意这些驱动不是安装盘的AppleIntel</strong>
+去pcbeta上搜索一下lion的原版驱动，必须包含AppleIntelHD3000Graphics**开头的驱动（安装盘上没这些，正常不删文件安装是有这些驱动的）</p>
+
+<h3>必备软件</h3>
+
+<ol>
+<li><a href="http://support.apple.com/kb/DL1484">10.7.3 Combo Update</a>   (升级包)</li>
+<li><a href="http://www.tonymacx86.com/C:Dq-OCPpT/MultiBeast-4.3.1.zip">MultiBeast-4.3.1 for lion</a>           （驱动包）</li>
+<li>Kext Utility          (驱动权限重建MultiBeast自带)</li>
+<li>SleepEnabler.kext     解决睡眠问题</li>
+<li>VoodooBattery.kext    电池显示</li>
+</ol>
+
+
+<h3>驱动安装</h3>
+
+<ul>
+<li>先安装<em>10.7.3 Combo Update</em> ，安装完后<strong>不要重启!!</strong></li>
+<li>运行MultiBeast,选择下面提到的驱动</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>System Utilities
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; ElliottForceLegacyRTC
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; EvOreboot
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; FakeSMC
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; IOUSBFamily Rollback
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; NullCPUPowerManagement
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; USB 3.0
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Miscellaneous -&gt; PS/2 Keyboard/Mice...
+</span><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Network - &gt; Lnx2Mac&#39;s Realtek...
+</span><span class='line'>Customization -&gt; System Definitions -&gt; MacBook Pro - &gt; MacBook Pro 8,1
+</span><span class='line'>OSx86 Software -&gt; 全选
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>点击下一步、继续继续。安装完后，<strong>不要重启</strong>。</p></li>
+<li><p>在运行一次MultiBeast，只选择声卡驱动</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'>Drivers <span class="nb">&amp;</span> Bootloaders -&gt; Kexts <span class="nb">&amp;</span> Enablers -&gt; Audio -&gt; Universal -&gt; VoodooHDA .2.7.3
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>删除自带的AppleHDA</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm -r AppleHDA.kext   <span class="o">(</span>在/System/Library/Extensions<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>安装睡眠和电池驱动
+SleepEnabler.kext和VoodooBattery.kext</p></li>
+<li><p>使用Kext Utility重建缓存</p></li>
+<li>重启，使用-f参数</li>
+</ul>
+
+
+<p>按上面的步骤重启后，系统声卡、显卡、网卡、usb3.0都能驱动的了。</p>
+
+<p>现在右侧的USB3.0接口可以完美使用了，但是左侧的USB2.0却不能使用。
+要驱动左侧的USB2.0和SD读卡器，需要删除AppleHPET.kext（<strong>要备份</strong>，这个在我机器上有效，其他机器不一定）</p>
+
+<h3>显示器亮度</h3>
+
+<p>安装好的系统不能调节亮度，需要在dsdt上添加几行代码
+推荐使用dsdt editor 导出dsdt，该软件能自动fix错误和编译。
+在dsdt中搜索PWRB ，添加以下这个Device (PNLF)方法，原来的内容不要删</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Device <span class="o">(</span>PWRB<span class="o">)</span>
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>         Device <span class="o">(</span>PNLF<span class="o">)</span>
+</span><span class='line'>         <span class="o">{</span>
+</span><span class='line'>                  Name <span class="o">(</span>_HID, EisaId <span class="o">(</span><span class="s2">&quot;APP0002&quot;</span><span class="o">))</span>
+</span><span class='line'>                  Name <span class="o">(</span>_CID, <span class="s2">&quot;backlight&quot;</span><span class="o">)</span>
+</span><span class='line'>                  Name <span class="o">(</span>_UID, 0x0A<span class="o">)</span>
+</span><span class='line'>                  Name <span class="o">(</span>_STA, 0x0B<span class="o">)</span>
+</span><span class='line'>         <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>编译后把dsdt.aml放到/Extra下，重启就可以在显示器里调节亮度了,不过每次重启后又要重新调节。
+不要用ACPIBacklight.kext，用了反而调节不了。不知道为何·~求解~~</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Linux Android Adb vendorId]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/03/17/mac-linux-android-adb-vendorid/"/>
+    <updated>2012-03-17T14:39:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/03/17/mac-linux-android-adb-vendorid</id>
+    <content type="html"><![CDATA[<p>android adb连接不到设备一般有2种解决方法：</p>
+
+
+<ol>
+    <li>在adb_usb.ini文件下添加vendor id；</li>
+    <li>去市场下载个adb wireless通过这个wifi&#8217;进行连接</li>
+</ol>
+
+
+<div>adb wireless很方便，网上很多教程，这里就不说了。这里主要说明一下这个vendor id怎么来。</div>
+
+
+<div>&nbsp;</div>
+
+
+<div>首先确定在用户目录~/.android/adb_usb.ini文件存在，如果没有需要运行以下命令生成</div>
+
+
+<div>
+    <pre class="brush: bash; gutter: false; toolbar: false; auto-links: false; wrap-lines: false">android update adb</pre>
+</div>
+
+
+<div>在<strong>Linux</strong>下运行lsusb命令，命令结果为</div>
+
+
+<div><pre class="brush: bash; gutter: false; toolbar: false; auto-links: false; wrap-lines: false">Bus 005 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 004 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 003 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 002 Device 002: ID 0e79:1411 Archos, Inc.
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</pre>
+</div>
+
+
+<div>从列表中找到android设备名称，我的是Archos所以id为<span class="Apple-style-span" style="white-space: pre;"
+                                           data-mce-style="white-space: pre;">0e79</span>
+</div>
+
+
+<div><span class="Apple-style-span" style="white-space: pre;" data-mce-style="white-space: pre;">在adb_usb.ini上填入id的时候需要添加0x开头,填写0x0e79。每行一个id。</span>
+</div>
+
+
+<div><span class="Apple-style-span" style="white-space: pre;" data-mce-style="white-space: pre;"><br></span></div>
+
+
+<div><span class="Apple-style-span" style="white-space: pre;" data-mce-style="white-space: pre;"><strong>在Mac</strong> 系统查看命令不同，运行的命令为</span>
+</div>
+
+
+<div>
+    <pre class="brush: bash; gutter: false; toolbar: false; auto-links: false; wrap-lines: false">system_profiler SPUSBDataType</pre>
+</div>
+
+
+<div>&nbsp;</div>
+
+
+<div>&nbsp;</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Parallels Shard #0 Network]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/02/15/parallels-shard-number-0-network/"/>
+    <updated>2012-02-15T18:37:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/02/15/parallels-shard-number-0-network</id>
+    <content type="html"><![CDATA[<p>在mac lion下Parallels Desktop 7运行性能比vm快多了，启动xp欢迎界面都没看清楚就进去了，非常强悍。
+之前在pd7下安装了xp，后来不记得弄过什么网络配置，可能删除了无线网络之类的。
+今天进入pd7提示“在 <em>您mac上没有网络适配器为</em> Parallels shard #0虚拟网络。该网络适配器0将被断开。”
+修复方法是在pd7菜单:<strong>偏好设置-高级-网络“更改设置”-恢复默认设置；</strong>然后重启pd7就可以了</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Twitter Bootstrap Modal插件点击背景自动消失]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/"/>
+    <updated>2011-11-14T10:31:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/11/14/twitter-bootstrap-modal-auto-hide</id>
+    <content type="html"><![CDATA[<p>我是在Twitter Bootstrap2.0.1中遇到这个问题。
+问题描述：
+直接调用</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">)</span><span class="err">；</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>显示的Modal存在一个问题，就是当你鼠标点击Modal后面的背景，Modal会自动隐藏消失！！！
+只要添加一个参数就可以解决这个问题</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="nx">backdrop</span><span class="o">:</span><span class="s1">&#39;static&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>官方文档显示backdrop的类型是boolean，实际上设置true和false都不行，文档上有错误应该为String类型才对</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Can't Locate Android SDK in Titanium Studio]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/"/>
+    <updated>2011-09-11T14:28:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio</id>
+    <content type="html"><![CDATA[<p>在Titanium Studio中设置了Android sdk路径，但是运行的时候提示&#8221;Can&rsquo;t locate Android SDK&#8221;
+原因是Titanium sdk 对 Android sdk版本有要求:
++ <strong>Titaniun sdk 1.7 要求至少要Android sdk 2.1</strong>
++ <strong>Titaniun sdk 1.8 要求至少要Android sdk 2.2</strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Grails2 Upgrade Exception]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/08/15/grails2-upgrade-exception/"/>
+    <updated>2011-08-15T12:15:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/08/15/grails2-upgrade-exception</id>
+    <content type="html"><![CDATA[<p>Grails1.x升级到Grails2.x又遇到一个异常</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Error configuring application listener of class org.codehaus.groovy.grails.web.util.Log4jConfigListener**
+</span><span class='line'>Message: org.codehaus.groovy.grails.web.util.Log4jConfigListener</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个很容易解决，很多人认为是Log4j问题，其实不是。
+之前的项目运行过 <em>grails install-templates</em> 命令，在生成的web.xml下添加了内容。
+新版本的grails修改过默认web.xml的内容，因此与现在的web.xml冲突。
+解决办法是先把目前的web.xml文件备份并删除 ，运行一次 <em>grails install-templates</em> 命令生成新的web.xml
+再把新增的内容手动添加上去</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Grails2升级异常which Does Not Appear to Be a Command Object Class.]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/"/>
+    <updated>2011-08-10T12:15:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class</id>
+    <content type="html"><![CDATA[<p>今天把老项目Grails1.1升级到Grails2.01，出现奇怪的错误</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> XXXController.groovy: The [someAction] action accepts a parameter of type [EventTypeEnum]
+</span><span class='line'> which does not appear to be a command object class. This can happen if the source code for this  class is not in
+</span><span class='line'> this project and the class is not marked with @Validateable.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>查了一下文档，原来grails2.x把Controller里面的所有public方法都会发布为action。
+grails1.x Controller的action写法必须为</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def exportExcelSingle = {
+</span><span class='line'>    ...
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>而grails2.x公共方法也会发布为actiong，上面写法等同于</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public void exportExcelSingle = {
+</span><span class='line'>    ...
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修复方法很简单，把public或者def开头的这些私有方法，声明为 <strong>private</strong> 就ok</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac 连接不了samba]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/05/07/mac-connect-samba-fail/"/>
+    <updated>2011-05-07T12:13:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/05/07/mac-connect-samba-fail</id>
+    <content type="html"><![CDATA[<p>Mac连接samba或者windows共享，一般方法直接在Finder &mdash;前往&mdash;连接服务器。中输入”smb://ServerIpAddress“ &nbsp;就可以了。
+今天连接一个新建的samba服务器，怎么连接也提示密码错误！
+原来是由于Samba 配置文件里面的 “netbios name” 名称太长，引起的。
+详细参考<a href="http://blog.sonitech.org/2011/05/04/%E8%A7%A3%E5%86%B3-mac-%E8%BF%9E%E6%8E%A5-samba3-%E7%9A%84%E9%97%AE%E9%A2%98/">连接</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java Webservice Jax-rs 中文乱码]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/03/02/java-webservice-jax-rs-utf8/"/>
+    <updated>2011-03-02T12:08:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/03/02/java-webservice-jax-rs-utf8</id>
+    <content type="html"><![CDATA[<p>今天遇到个奇怪问题，系统用webservice 接收请求，然后调用电信的宽乐网关接口发送短信。
+系统编码已经统一为UTF-8，服务器为Ubuntu。系统日志编码正常，但手机接收到的中文短信为乱码。
+JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
+最后设置为 <strong>-Dfile.encoding=EUC-CN</strong> 竟然奇迹地成功了 ，运行一切正常。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Twitter Bootstrap IE7下断行问题]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line/"/>
+    <updated>2011-01-11T04:04:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line</id>
+    <content type="html"><![CDATA[<p>twitter bootstrap2.0有一个bug，在html上添加注释会引起断行（IE7下，IE8，9没问题）
+例如以下官方代码:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="container-fluid"&gt;
+</span><span class='line'>    &lt;div class="row-fluid"&gt;
+</span><span class='line'>        &lt;div class="span4"&gt;first&lt;/div&gt;
+</span><span class='line'>        &lt;div class="span8"&gt;second&lt;/div&gt;
+</span><span class='line'>    &lt;/div&gt;
+</span><span class='line'>&lt;/div&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>效果为显示一行，左侧显示first字符，右侧显示second字符，非常简单。但如果添加注释，就发生问题了。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div class="container-fluid"&gt;
+</span><span class='line'>    &lt;div class="row-fluid"&gt;&lt;!--顶部logo--&gt;
+</span><span class='line'>        &lt;div class="span4"&gt;first&lt;/div&gt;
+</span><span class='line'>        &lt;div class="span8"&gt;second&lt;/div&gt;
+</span><span class='line'>    &lt;/div&gt;
+</span><span class='line'>&lt;/div&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在row-fluid后添加注释&lt;!&mdash;顶部logo&mdash;&gt;,在IE7下运行显示first和second各自一行了！
+以上测试环境在IETester上测试，没在纯IE7下使用过。</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>浏览器后退js不执行 - 大小麦哲伦</title>
+  <meta name="author" content="zhongdechan">
+
+  
+  <meta name="description" content="当点击后退按钮返回之前访问过的页面时,该网页上的脚本将无法再运行。 解决办法 设置一个空的window.onunload函数 e.g. Javascript1
+2
+3
+4
+5
+6
+&lt;html&gt;&lt;body&gt;
+&lt;script type=&quot;text/ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zhongdechan.github.com/blog/2014/04/25/history-back-javascript-not-run">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="大小麦哲伦" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30173088-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">大小麦哲伦</a></h1>
+  
+    <h2>名字叫阿花，摇着尾巴 ... ...</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zhongdechan.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">浏览器后退js不执行</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-25T22:41:34+08:00" pubdate data-updated="true">Apr 25<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>当点击后退按钮返回之前访问过的页面时,该网页上的脚本将无法再运行。</p>
+
+<p>解决办法 设置一个空的window.onunload函数</p>
+
+<p>e.g.</p>
+
+<figure class='code'><figcaption><span>Javascript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;&lt;body&gt;</span>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;页面加载运行.&#39;</span><span class="p">);</span> <span class="p">};</span>
+</span><span class='line'>  <span class="nb">window</span><span class="p">.</span><span class="nx">onunload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){};</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">zhongdechan</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-25T22:41:34+08:00" pubdate data-updated="true">Apr 25<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zhongdechan.github.com/blog/2014/04/25/history-back-javascript-not-run/" data-via="" data-counturl="http://zhongdechan.github.com/blog/2014/04/25/history-back-javascript-not-run/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/12/showmodaldialog-chrome/" title="Previous Post: Chrome下showModalDialog dialogWidth长度属性无效">&laquo; Chrome下showModalDialog dialogWidth长度属性无效</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/25/history-back-javascript-not-run/">浏览器后退js不执行</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/12/showmodaldialog-chrome/">Chrome下showModalDialog dialogWidth长度属性无效</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/12/ubuntu-tomcat-dir/">Ubuntu Tomcat 目录</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/11/hibernate-many-to-many-query/">Hibernate多对多查询</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/10/mac-windows-time-tongbu/">解决Windows与Mac时间不同步</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>标签云</h1>
+    <span id="tag-cloud"><a href='/blog/categories/android' style='font-size: 115.0%'>Android(1)</a> <a href='/blog/categories/css' style='font-size: 130.0%'>CSS(2)</a> <a href='/blog/categories/grails' style='font-size: 130.0%'>Grails(2)</a> <a href='/blog/categories/java' style='font-size: 130.0%'>JAVA(2)</a> <a href='/blog/categories/javascript' style='font-size: 115.0%'>Javascript(1)</a> <a href='/blog/categories/javascript' style='font-size: 115.0%'>javascript(1)</a> <a href='/blog/categories/linux' style='font-size: 115.0%'>Linux(1)</a> <a href='/blog/categories/mac' style='font-size: 160.0%'>Mac(4)</a> <a href='/blog/categories/mobile' style='font-size: 115.0%'>Mobile(1)</a> <a href='/blog/categories/web' style='font-size: 130.0%'>Web(2)</a> </span>
+</section>
+<section>
+  <h1>博客分类</h1>
+    <ul id="category-list"><li><a href='/blog/categories/android'>Android (1)</a></li><li><a href='/blog/categories/css'>CSS (2)</a></li><li><a href='/blog/categories/grails'>Grails (2)</a></li><li><a href='/blog/categories/java'>JAVA (2)</a></li><li><a href='/blog/categories/javascript'>Javascript (1)</a></li><li><a href='/blog/categories/javascript'>javascript (1)</a></li><li><a href='/blog/categories/linux'>Linux (1)</a></li><li><a href='/blog/categories/mac'>Mac (4)</a></li><li><a href='/blog/categories/mobile'>Mobile (1)</a></li><li><a href='/blog/categories/web'>Web (2)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - zhongdechan -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zhongdechansblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zhongdechan.github.com/blog/2014/04/25/history-back-javascript-not-run/';
+        var disqus_url = 'http://zhongdechan.github.com/blog/2014/04/25/history-back-javascript-not-run/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

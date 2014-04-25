@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Grails | 大小麦哲伦]]></title>
+  <link href="http://zhongdechan.github.com/blog/categories/grails/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.com/"/>
+  <updated>2014-04-25T23:11:02+08:00</updated>
+  <id>http://zhongdechan.github.com/</id>
+  <author>
+    <name><![CDATA[zhongdechan]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Grails2 upgrade exception]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/08/15/grails2-upgrade-exception/"/>
+    <updated>2011-08-15T12:15:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/08/15/grails2-upgrade-exception</id>
+    <content type="html"><![CDATA[<p>Grails1.x升级到Grails2.x又遇到一个异常
+<code>
+Error configuring application listener of class org.codehaus.groovy.grails.web.util.Log4jConfigListener**
+Message: org.codehaus.groovy.grails.web.util.Log4jConfigListener
+</code>
+这个很容易解决，很多人认为是Log4j问题，其实不是。
+之前的项目运行过 <em>grails install-templates</em> 命令，在生成的web.xml下添加了内容。
+新版本的grails修改过默认web.xml的内容，因此与现在的web.xml冲突。
+解决办法是先把目前的web.xml文件备份并删除 ，运行一次 <em>grails install-templates</em> 命令生成新的web.xml
+再把新增的内容手动添加上去</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Grails2升级异常which does not appear to be a command object class.]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/"/>
+    <updated>2011-08-10T12:15:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class</id>
+    <content type="html"><![CDATA[<p>今天把老项目Grails1.1升级到Grails2.01，出现奇怪的错误
+```</p>
+
+<pre><code> XXXController.groovy: The [someAction] action accepts a parameter of type [EventTypeEnum]
+ which does not appear to be a command object class. This can happen if the source code for this  class is not in
+ this project and the class is not marked with @Validateable.
+</code></pre>
+
+<p><code>
+查了一下文档，原来grails2.x把Controller里面的所有public方法都会发布为action。
+grails1.x Controller的action写法必须为
+</code>
+def exportExcelSingle = {</p>
+
+<pre><code>...
+</code></pre>
+
+<p>}
+<code>
+而grails2.x公共方法也会发布为actiong，上面写法等同于
+</code>
+public void exportExcelSingle = {</p>
+
+<pre><code>...
+</code></pre>
+
+<p>}
+```
+修复方法很简单，把public或者def开头的这些私有方法，声明为 <strong>private</strong> 就ok</p>
+]]></content>
+  </entry>
+  
+</feed>

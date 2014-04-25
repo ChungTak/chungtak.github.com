@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | 大小麦哲伦]]></title>
+  <link href="http://zhongdechan.github.com/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.com/"/>
+  <updated>2014-04-25T23:11:02+08:00</updated>
+  <id>http://zhongdechan.github.com/</id>
+  <author>
+    <name><![CDATA[zhongdechan]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ubuntu tomcat 目录]]></title>
+    <link href="http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir/"/>
+    <updated>2012-10-12T09:13:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir</id>
+    <content type="html"><![CDATA[<p>在ubuntu系统上使用apt-get安装tomcat的目录结构：</p>
+
+<ul>
+<li><p>/etc/tomcat7 &ndash; 全局配置</p></li>
+<li><p>/usr/share/tomcat7/ &ndash; 程序主目录</p></li>
+<li><p>/usr/share/tomcat7/conf/Catalina/localhost/ &ndash; 本机部署的 Catalina 配置</p></li>
+<li><p>/var/lib/tomcat7/ &ndash; 工作主目录</p></li>
+<li><p>/var/lib/tomcat7/webapps &ndash; （应用文件war包放在这里）</p></li>
+<li><p>/var/lib/tomcat7/work</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

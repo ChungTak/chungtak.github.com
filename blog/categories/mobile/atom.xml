@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Mobile | 大小麦哲伦]]></title>
+  <link href="http://zhongdechan.github.com/blog/categories/mobile/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.com/"/>
+  <updated>2014-04-25T23:11:02+08:00</updated>
+  <id>http://zhongdechan.github.com/</id>
+  <author>
+    <name><![CDATA[zhongdechan]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Can't locate Android SDK in Titanium Studio]]></title>
+    <link href="http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/"/>
+    <updated>2011-09-11T14:28:00+08:00</updated>
+    <id>http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio</id>
+    <content type="html"><![CDATA[<p>在Titanium Studio中设置了Android sdk路径，但是运行的时候提示"Can&rsquo;t locate Android SDK"
+原因是Titanium sdk 对 Android sdk版本有要求:
++ <strong>Titaniun sdk 1.7 要求至少要Android sdk 2.1</strong>
++ <strong>Titaniun sdk 1.8 要求至少要Android sdk 2.2</strong></p>
+]]></content>
+  </entry>
+  
+</feed>
