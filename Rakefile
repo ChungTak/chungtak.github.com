@@ -9,10 +9,10 @@ ssh_port       = "22"
 document_root  = "~/website.com/"
 rsync_delete   = false
 rsync_args     = ""  # Any extra arguments to pass to rsync
-deploy_default = "rsync"
+deploy_default = "push"
 
 # This will be configured for you when you run config_deploy
-deploy_branch  = "gh-pages"
+deploy_branch  = "master"
 
 ## -- Misc Configs -- ##
 
@@ -420,7 +420,7 @@ task :pingomatic do
   begin
     require 'xmlrpc/client'
     puts '* Pinging ping-o-matic'
-    XMLRPC::Client.new('rpc.pingomatic.com', '/').call('weblogUpdates.extendedPing', 'Ewal.net' , 'http://zhongdechan.github.com', 'http://zhongdechan.github.com/atom.xml')
+    XMLRPC::Client.new('rpc.pingomatic.com', '/').call('weblogUpdates.extendedPing', 'Ewal.net' , 'http://zhongdechan.github.io', 'http://zhongdechan.github.io/atom.xml')
   rescue LoadError
     puts '! Could not ping ping-o-matic, because XMLRPC::Client could not be found.'
   end
@@ -432,7 +432,7 @@ task :sitemapgoogle do
     require 'net/http'
     require 'uri'
     puts '* Pinging Google about our sitemap'
-    Net::HTTP.get('www.google.com', '/webmasters/tools/ping?sitemap=' + URI.escape('http://zhongdechan.github.com/sitemap.xml'))
+    Net::HTTP.get('www.google.com', '/webmasters/tools/ping?sitemap=' + URI.escape('http://zhongdechan.github.io/sitemap.xml'))
   rescue LoadError
     puts '! Could not ping Google about our sitemap, because Net::HTTP or URI could not be found.'
   end
@@ -444,7 +444,7 @@ task :sitemapbing do
     require 'net/http'
     require 'uri'
     puts '* Pinging Bing about our sitemap'
-    Net::HTTP.get('www.bing.com', '/webmaster/ping.aspx?siteMap=' + URI.escape('http://zhongdechan.github.com/sitemap.xml'))
+    Net::HTTP.get('www.bing.com', '/webmaster/ping.aspx?siteMap=' + URI.escape('http://zhongdechan.github.io/sitemap.xml'))
   rescue LoadError
     puts '! Could not ping Bing about our sitemap, because Net::HTTP or URI could not be found.'
   end
