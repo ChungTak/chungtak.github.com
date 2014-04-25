@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[大小麦哲伦]]></title>
-  <link href="http://zhongdechan.github.com/atom.xml" rel="self"/>
-  <link href="http://zhongdechan.github.com/"/>
-  <updated>2014-04-25T23:11:02+08:00</updated>
-  <id>http://zhongdechan.github.com/</id>
+  <link href="http://zhongdechan.github.io/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.io/"/>
+  <updated>2014-04-26T00:26:55+08:00</updated>
+  <id>http://zhongdechan.github.io/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[浏览器后退js不执行]]></title>
-    <link href="http://zhongdechan.github.com/blog/2014/04/25/history-back-javascript-not-run/"/>
+    <link href="http://zhongdechan.github.io/blog/2014/04/25/history-back-javascript-not-run/"/>
     <updated>2014-04-25T22:41:34+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2014/04/25/history-back-javascript-not-run</id>
+    <id>http://zhongdechan.github.io/blog/2014/04/25/history-back-javascript-not-run</id>
     <content type="html"><![CDATA[<p>当点击后退按钮返回之前访问过的页面时,该网页上的脚本将无法再运行。</p>
 
 <p>解决办法 设置一个空的window.onunload函数</p>
@@ -43,9 +43,9 @@
   
   <entry>
     <title type="html"><![CDATA[Chrome下showModalDialog dialogWidth长度属性无效]]></title>
-    <link href="http://zhongdechan.github.com/blog/2012/10/12/showmodaldialog-chrome/"/>
+    <link href="http://zhongdechan.github.io/blog/2012/10/12/showmodaldialog-chrome/"/>
     <updated>2012-10-12T09:29:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2012/10/12/showmodaldialog-chrome</id>
+    <id>http://zhongdechan.github.io/blog/2012/10/12/showmodaldialog-chrome</id>
     <content type="html"><![CDATA[<p>在Chrome浏览器下调用window.showModalDialog 会忽略dialogWidth和dialogHeight属性,其他浏览器IE,firefox却显示正常。<br/>
 原因是Chrome下dialogWidth和dialogHeight的值<strong>不能带&#8221;px&#8221;后缀</strong>.正确写法<code>"dialogWidth:100;dialogHeight:200"</code>  <br/>
 但其他浏览器则相反需要带有&#8221;px&#8221;后缀,例如:<code>"dialogWidth:100px;dialogHeight:200px"</code></p>
@@ -97,9 +97,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ubuntu Tomcat 目录]]></title>
-    <link href="http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir/"/>
+    <link href="http://zhongdechan.github.io/blog/2012/10/12/ubuntu-tomcat-dir/"/>
     <updated>2012-10-12T09:13:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir</id>
+    <id>http://zhongdechan.github.io/blog/2012/10/12/ubuntu-tomcat-dir</id>
     <content type="html"><![CDATA[<p>在ubuntu系统上使用apt-get安装tomcat的目录结构：</p>
 
 <ul>
@@ -116,9 +116,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hibernate多对多查询]]></title>
-    <link href="http://zhongdechan.github.com/blog/2012/10/11/hibernate-many-to-many-query/"/>
+    <link href="http://zhongdechan.github.io/blog/2012/10/11/hibernate-many-to-many-query/"/>
     <updated>2012-10-11T09:35:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2012/10/11/hibernate-many-to-many-query</id>
+    <id>http://zhongdechan.github.io/blog/2012/10/11/hibernate-many-to-many-query</id>
     <content type="html"><![CDATA[<p>示例：每篇文章（article）与标签（tag）为多对多关系<br/>
 <img src="http://ww2.sinaimg.cn/large/a74ecc4cjw1dxr0mgy0vdj.jpg" alt="img" /><br/>
 Hibernate 映射:</p>
@@ -397,9 +397,9 @@ MySQL 查询语句:</p>
   
   <entry>
     <title type="html"><![CDATA[解决Windows与Mac时间不同步]]></title>
-    <link href="http://zhongdechan.github.com/blog/2012/10/10/mac-windows-time-tongbu/"/>
+    <link href="http://zhongdechan.github.io/blog/2012/10/10/mac-windows-time-tongbu/"/>
     <updated>2012-10-10T09:48:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2012/10/10/mac-windows-time-tongbu</id>
+    <id>http://zhongdechan.github.io/blog/2012/10/10/mac-windows-time-tongbu</id>
     <content type="html"><![CDATA[<p>安装Windows 和 Mac 苹果双系统后，系统时间出现不同步。有两种简单的解决办法：</p>
 
 <ul>
@@ -418,9 +418,9 @@ MySQL 查询语句:</p>
   
   <entry>
     <title type="html"><![CDATA[Octopress 常见问题]]></title>
-    <link href="http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti/"/>
+    <link href="http://zhongdechan.github.io/blog/2012/10/09/octopress-faq-wenti/"/>
     <updated>2012-10-09T14:12:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti</id>
+    <id>http://zhongdechan.github.io/blog/2012/10/09/octopress-faq-wenti</id>
     <content type="html"><![CDATA[<ul>
 <li><strong>Mountain Lion 编译报错extconf.rb:21:in `<main>&lsquo;: Only Darwin systems</strong></li>
 </ul>
@@ -500,9 +500,9 @@ MySQL 查询语句:</p>
   
   <entry>
     <title type="html"><![CDATA[Dell Vostro V131 Mac Lion 完美安装]]></title>
-    <link href="http://zhongdechan.github.com/blog/2012/03/21/dell-vostro-v131-mac-lion/"/>
+    <link href="http://zhongdechan.github.io/blog/2012/03/21/dell-vostro-v131-mac-lion/"/>
     <updated>2012-03-21T20:29:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2012/03/21/dell-vostro-v131-mac-lion</id>
+    <id>http://zhongdechan.github.io/blog/2012/03/21/dell-vostro-v131-mac-lion</id>
     <content type="html"><![CDATA[<p>安装黑苹果真的很折腾，近来同事在v131上完美安装了lion，足足花了一天，不断的重启不断滴尝试。建议想用苹果的还是直接买白苹果省心。</p>
 
 <h3>安装情况</h3>
@@ -648,9 +648,9 @@ SleepEnabler.kext和VoodooBattery.kext</p></li>
   
   <entry>
     <title type="html"><![CDATA[Mac Linux Android Adb vendorId]]></title>
-    <link href="http://zhongdechan.github.com/blog/2012/03/17/mac-linux-android-adb-vendorid/"/>
+    <link href="http://zhongdechan.github.io/blog/2012/03/17/mac-linux-android-adb-vendorid/"/>
     <updated>2012-03-17T14:39:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2012/03/17/mac-linux-android-adb-vendorid</id>
+    <id>http://zhongdechan.github.io/blog/2012/03/17/mac-linux-android-adb-vendorid</id>
     <content type="html"><![CDATA[<p>android adb连接不到设备一般有2种解决方法：</p>
 
 
@@ -716,9 +716,9 @@ Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</pre>
   
   <entry>
     <title type="html"><![CDATA[Parallels Shard #0 Network]]></title>
-    <link href="http://zhongdechan.github.com/blog/2012/02/15/parallels-shard-number-0-network/"/>
+    <link href="http://zhongdechan.github.io/blog/2012/02/15/parallels-shard-number-0-network/"/>
     <updated>2012-02-15T18:37:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2012/02/15/parallels-shard-number-0-network</id>
+    <id>http://zhongdechan.github.io/blog/2012/02/15/parallels-shard-number-0-network</id>
     <content type="html"><![CDATA[<p>在mac lion下Parallels Desktop 7运行性能比vm快多了，启动xp欢迎界面都没看清楚就进去了，非常强悍。
 之前在pd7下安装了xp，后来不记得弄过什么网络配置，可能删除了无线网络之类的。
 今天进入pd7提示“在 <em>您mac上没有网络适配器为</em> Parallels shard #0虚拟网络。该网络适配器0将被断开。”
@@ -728,9 +728,9 @@ Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</pre>
   
   <entry>
     <title type="html"><![CDATA[Twitter Bootstrap Modal插件点击背景自动消失]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/"/>
     <updated>2011-11-14T10:31:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/11/14/twitter-bootstrap-modal-auto-hide</id>
+    <id>http://zhongdechan.github.io/blog/2011/11/14/twitter-bootstrap-modal-auto-hide</id>
     <content type="html"><![CDATA[<p>我是在Twitter Bootstrap2.0.1中遇到这个问题。
 问题描述：
 直接调用</p>
@@ -754,9 +754,9 @@ Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</pre>
   
   <entry>
     <title type="html"><![CDATA[Can't Locate Android SDK in Titanium Studio]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/"/>
     <updated>2011-09-11T14:28:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio</id>
+    <id>http://zhongdechan.github.io/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio</id>
     <content type="html"><![CDATA[<p>在Titanium Studio中设置了Android sdk路径，但是运行的时候提示&#8221;Can&rsquo;t locate Android SDK&#8221;
 原因是Titanium sdk 对 Android sdk版本有要求:
 + <strong>Titaniun sdk 1.7 要求至少要Android sdk 2.1</strong>
@@ -766,9 +766,9 @@ Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</pre>
   
   <entry>
     <title type="html"><![CDATA[Grails2 Upgrade Exception]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/08/15/grails2-upgrade-exception/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/08/15/grails2-upgrade-exception/"/>
     <updated>2011-08-15T12:15:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/08/15/grails2-upgrade-exception</id>
+    <id>http://zhongdechan.github.io/blog/2011/08/15/grails2-upgrade-exception</id>
     <content type="html"><![CDATA[<p>Grails1.x升级到Grails2.x又遇到一个异常</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -787,9 +787,9 @@ Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</pre>
   
   <entry>
     <title type="html"><![CDATA[Grails2升级异常which Does Not Appear to Be a Command Object Class.]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/"/>
     <updated>2011-08-10T12:15:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class</id>
+    <id>http://zhongdechan.github.io/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class</id>
     <content type="html"><![CDATA[<p>今天把老项目Grails1.1升级到Grails2.01，出现奇怪的错误</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -827,9 +827,9 @@ grails1.x Controller的action写法必须为</p>
   
   <entry>
     <title type="html"><![CDATA[Mac 连接不了samba]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/05/07/mac-connect-samba-fail/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/05/07/mac-connect-samba-fail/"/>
     <updated>2011-05-07T12:13:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/05/07/mac-connect-samba-fail</id>
+    <id>http://zhongdechan.github.io/blog/2011/05/07/mac-connect-samba-fail</id>
     <content type="html"><![CDATA[<p>Mac连接samba或者windows共享，一般方法直接在Finder &mdash;前往&mdash;连接服务器。中输入”smb://ServerIpAddress“ &nbsp;就可以了。
 今天连接一个新建的samba服务器，怎么连接也提示密码错误！
 原来是由于Samba 配置文件里面的 “netbios name” 名称太长，引起的。
@@ -839,9 +839,9 @@ grails1.x Controller的action写法必须为</p>
   
   <entry>
     <title type="html"><![CDATA[Java Webservice Jax-rs 中文乱码]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/03/02/java-webservice-jax-rs-utf8/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/03/02/java-webservice-jax-rs-utf8/"/>
     <updated>2011-03-02T12:08:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/03/02/java-webservice-jax-rs-utf8</id>
+    <id>http://zhongdechan.github.io/blog/2011/03/02/java-webservice-jax-rs-utf8</id>
     <content type="html"><![CDATA[<p>今天遇到个奇怪问题，系统用webservice 接收请求，然后调用电信的宽乐网关接口发送短信。
 系统编码已经统一为UTF-8，服务器为Ubuntu。系统日志编码正常，但手机接收到的中文短信为乱码。
 JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
@@ -851,9 +851,9 @@ JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。
   
   <entry>
     <title type="html"><![CDATA[Twitter Bootstrap IE7下断行问题]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/01/11/twitter-bootstrap-ie7-break-line/"/>
     <updated>2011-01-11T04:04:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line</id>
+    <id>http://zhongdechan.github.io/blog/2011/01/11/twitter-bootstrap-ie7-break-line</id>
     <content type="html"><![CDATA[<p>twitter bootstrap2.0有一个bug，在html上添加注释会引起断行（IE7下，IE8，9没问题）
 例如以下官方代码:</p>
 

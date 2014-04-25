@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Linux | 大小麦哲伦]]></title>
-  <link href="http://zhongdechan.github.com/blog/categories/linux/atom.xml" rel="self"/>
-  <link href="http://zhongdechan.github.com/"/>
-  <updated>2014-04-25T23:11:02+08:00</updated>
-  <id>http://zhongdechan.github.com/</id>
+  <link href="http://zhongdechan.github.io/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.io/"/>
+  <updated>2014-04-26T00:26:55+08:00</updated>
+  <id>http://zhongdechan.github.io/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[ubuntu tomcat 目录]]></title>
-    <link href="http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir/"/>
+    <link href="http://zhongdechan.github.io/blog/2012/10/12/ubuntu-tomcat-dir/"/>
     <updated>2012-10-12T09:13:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2012/10/12/ubuntu-tomcat-dir</id>
+    <id>http://zhongdechan.github.io/blog/2012/10/12/ubuntu-tomcat-dir</id>
     <content type="html"><![CDATA[<p>在ubuntu系统上使用apt-get安装tomcat的目录结构：</p>
 
 <ul>

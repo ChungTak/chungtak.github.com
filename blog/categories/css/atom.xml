@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: CSS | 大小麦哲伦]]></title>
-  <link href="http://zhongdechan.github.com/blog/categories/css/atom.xml" rel="self"/>
-  <link href="http://zhongdechan.github.com/"/>
-  <updated>2014-04-25T23:11:02+08:00</updated>
-  <id>http://zhongdechan.github.com/</id>
+  <link href="http://zhongdechan.github.io/blog/categories/css/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.io/"/>
+  <updated>2014-04-26T00:26:55+08:00</updated>
+  <id>http://zhongdechan.github.io/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Twitter Bootstrap Modal插件点击背景自动消失]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/11/14/twitter-bootstrap-modal-auto-hide/"/>
     <updated>2011-11-14T10:31:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/11/14/twitter-bootstrap-modal-auto-hide</id>
+    <id>http://zhongdechan.github.io/blog/2011/11/14/twitter-bootstrap-modal-auto-hide</id>
     <content type="html"><![CDATA[<p>我是在Twitter Bootstrap2.0.1中遇到这个问题。
 问题描述：
 直接调用
@@ -35,9 +35,9 @@ $('#myModal').modal(backdrop:'static');
   
   <entry>
     <title type="html"><![CDATA[twitter bootstrap IE7下断行问题]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/01/11/twitter-bootstrap-ie7-break-line/"/>
     <updated>2011-01-11T04:04:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/01/11/twitter-bootstrap-ie7-break-line</id>
+    <id>http://zhongdechan.github.io/blog/2011/01/11/twitter-bootstrap-ie7-break-line</id>
     <content type="html"><![CDATA[<p>twitter bootstrap2.0有一个bug，在html上添加注释会引起断行（IE7下，IE8，9没问题）
 例如以下官方代码:
 ```</p>

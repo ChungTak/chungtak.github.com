@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Web | 大小麦哲伦]]></title>
-  <link href="http://zhongdechan.github.com/blog/categories/web/atom.xml" rel="self"/>
-  <link href="http://zhongdechan.github.com/"/>
-  <updated>2014-04-25T23:11:02+08:00</updated>
-  <id>http://zhongdechan.github.com/</id>
+  <link href="http://zhongdechan.github.io/blog/categories/web/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.io/"/>
+  <updated>2014-04-26T00:26:55+08:00</updated>
+  <id>http://zhongdechan.github.io/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[octopress 常见问题]]></title>
-    <link href="http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti/"/>
+    <link href="http://zhongdechan.github.io/blog/2012/10/09/octopress-faq-wenti/"/>
     <updated>2012-10-09T14:12:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2012/10/09/octopress-faq-wenti</id>
+    <id>http://zhongdechan.github.io/blog/2012/10/09/octopress-faq-wenti</id>
     <content type="html"><![CDATA[<ul>
 <li><strong>Mountain Lion 编译报错extconf.rb:21:in `<main>&lsquo;: Only Darwin systems</strong></li>
 </ul>
@@ -85,9 +85,9 @@ rake aborted
   
   <entry>
     <title type="html"><![CDATA[Can't locate Android SDK in Titanium Studio]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio/"/>
     <updated>2011-09-11T14:28:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio</id>
+    <id>http://zhongdechan.github.io/blog/2011/09/11/cant-locate-android-sdk-in-titanium-studio</id>
     <content type="html"><![CDATA[<p>在Titanium Studio中设置了Android sdk路径，但是运行的时候提示"Can&rsquo;t locate Android SDK"
 原因是Titanium sdk 对 Android sdk版本有要求:
 + <strong>Titaniun sdk 1.7 要求至少要Android sdk 2.1</strong>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: javascript | 大小麦哲伦]]></title>
-  <link href="http://zhongdechan.github.com/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="http://zhongdechan.github.com/"/>
-  <updated>2014-04-25T23:11:02+08:00</updated>
-  <id>http://zhongdechan.github.com/</id>
+  <link href="http://zhongdechan.github.io/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.io/"/>
+  <updated>2014-04-26T00:26:55+08:00</updated>
+  <id>http://zhongdechan.github.io/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[浏览器后退js不执行]]></title>
-    <link href="http://zhongdechan.github.com/blog/2014/04/25/history-back-javascript-not-run/"/>
+    <link href="http://zhongdechan.github.io/blog/2014/04/25/history-back-javascript-not-run/"/>
     <updated>2014-04-25T22:41:34+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2014/04/25/history-back-javascript-not-run</id>
+    <id>http://zhongdechan.github.io/blog/2014/04/25/history-back-javascript-not-run</id>
     <content type="html"><![CDATA[<p>当点击后退按钮返回之前访问过的页面时,该网页上的脚本将无法再运行。</p>
 
 <p>解决办法 设置一个空的window.onunload函数</p>

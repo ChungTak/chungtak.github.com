@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: JAVA | 大小麦哲伦]]></title>
-  <link href="http://zhongdechan.github.com/blog/categories/java/atom.xml" rel="self"/>
-  <link href="http://zhongdechan.github.com/"/>
-  <updated>2014-04-25T23:11:02+08:00</updated>
-  <id>http://zhongdechan.github.com/</id>
+  <link href="http://zhongdechan.github.io/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.io/"/>
+  <updated>2014-04-26T00:26:55+08:00</updated>
+  <id>http://zhongdechan.github.io/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[hibernate多对多查询]]></title>
-    <link href="http://zhongdechan.github.com/blog/2012/10/11/hibernate-many-to-many-query/"/>
+    <link href="http://zhongdechan.github.io/blog/2012/10/11/hibernate-many-to-many-query/"/>
     <updated>2012-10-11T09:35:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2012/10/11/hibernate-many-to-many-query</id>
+    <id>http://zhongdechan.github.io/blog/2012/10/11/hibernate-many-to-many-query</id>
     <content type="html"><![CDATA[<p>示例：每篇文章（article）与标签（tag）为多对多关系<br/>
 <img src="http://ww2.sinaimg.cn/large/a74ecc4cjw1dxr0mgy0vdj.jpg" alt="img" /><br/>
 Hibernate 映射:</p>
@@ -211,9 +211,9 @@ List<Article> articles = query.list();
   
   <entry>
     <title type="html"><![CDATA[Java  webservice  jax-rs 中文乱码]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/03/02/java-webservice-jax-rs-utf8/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/03/02/java-webservice-jax-rs-utf8/"/>
     <updated>2011-03-02T12:08:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/03/02/java-webservice-jax-rs-utf8</id>
+    <id>http://zhongdechan.github.io/blog/2011/03/02/java-webservice-jax-rs-utf8</id>
     <content type="html"><![CDATA[<p>今天遇到个奇怪问题，系统用webservice 接收请求，然后调用电信的宽乐网关接口发送短信。
 系统编码已经统一为UTF-8，服务器为Ubuntu。系统日志编码正常，但手机接收到的中文短信为乱码。
 JAVA_OPTS设置为-Dfile.encoding=UTF8和-Dfile.encoding=GBK还是不行。

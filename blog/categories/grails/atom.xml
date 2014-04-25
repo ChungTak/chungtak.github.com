@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Grails | 大小麦哲伦]]></title>
-  <link href="http://zhongdechan.github.com/blog/categories/grails/atom.xml" rel="self"/>
-  <link href="http://zhongdechan.github.com/"/>
-  <updated>2014-04-25T23:11:02+08:00</updated>
-  <id>http://zhongdechan.github.com/</id>
+  <link href="http://zhongdechan.github.io/blog/categories/grails/atom.xml" rel="self"/>
+  <link href="http://zhongdechan.github.io/"/>
+  <updated>2014-04-26T00:26:55+08:00</updated>
+  <id>http://zhongdechan.github.io/</id>
   <author>
     <name><![CDATA[zhongdechan]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Grails2 upgrade exception]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/08/15/grails2-upgrade-exception/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/08/15/grails2-upgrade-exception/"/>
     <updated>2011-08-15T12:15:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/08/15/grails2-upgrade-exception</id>
+    <id>http://zhongdechan.github.io/blog/2011/08/15/grails2-upgrade-exception</id>
     <content type="html"><![CDATA[<p>Grails1.x升级到Grails2.x又遇到一个异常
 <code>
 Error configuring application listener of class org.codehaus.groovy.grails.web.util.Log4jConfigListener**
@@ -33,9 +33,9 @@ Message: org.codehaus.groovy.grails.web.util.Log4jConfigListener
   
   <entry>
     <title type="html"><![CDATA[Grails2升级异常which does not appear to be a command object class.]]></title>
-    <link href="http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/"/>
+    <link href="http://zhongdechan.github.io/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class/"/>
     <updated>2011-08-10T12:15:00+08:00</updated>
-    <id>http://zhongdechan.github.com/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class</id>
+    <id>http://zhongdechan.github.io/blog/2011/08/10/grails2-which-does-not-appear-to-be-a-command-object-class</id>
     <content type="html"><![CDATA[<p>今天把老项目Grails1.1升级到Grails2.01，出现奇怪的错误
 ```</p>
 
